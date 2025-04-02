@@ -1,0 +1,31 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Ejecutar tests y typecheck, guardando salida en un archivo temporal
+TEMP_FILE=$(mktemp)
+
+npx vitest run && \
+npx nuxi typecheck 2>&1 | tee "$TEMP_FILE"
+
+# Buscar errores en el archivo temporal
+if grep -q "error" "$TEMP_FILE"; then
+    printf "\n\e[31m"
+    printf "
+███████ ██████  ██████   ██████  ██████  
+██      ██   ██ ██   ██ ██    ██ ██   ██ 
+█████   ██████  ██████  ██    ██ ██████  
+██      ██   ██ ██   ██ ██    ██ ██   ██ 
+███████ ██   ██ ██   ██  ██████  ██   ██ 
+                                         
+                                         
+\n"
+    printf "Please execute the next command to see the errors in more detail: 'npx nuxi typecheck'\n\n"
+    printf "❌ Typecheck failed! Commit aborted. ❌\n\n"
+    printf "\e[0m"
+    rm "$TEMP_FILE"
+    exit 1
+fi
+
+# Limpiar el archivo temporal y continuar con lint-staged si no hubo errores
+rm "$TEMP_FILE"
+npx lint-staged
