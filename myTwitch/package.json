@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "fomart": "prettier --write .",
+    "format": "prettier --write .",
     "lint": "eslint --ext .ts,.vue .",
     "lint:fix": "eslint --ext .ts,.vue . --fix",
     "prepare:husky": "husky install",
