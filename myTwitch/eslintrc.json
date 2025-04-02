@@ -1,0 +1,10 @@
+{
+    "root": true,
+    "extends": [
+      "eslint:recommended",
+      "plugin:vue/vue3-recommended"
+    ],
+    "rules": {
+      // Añade tus reglas personalizadas aquí
+    }
+  }

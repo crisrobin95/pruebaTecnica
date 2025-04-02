@@ -4,12 +4,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   modules: [
-    '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/fonts',
     '@nuxt/icon',
-    '@nuxt/image',
-    '@nuxt/ui',
-    '@nuxt/test-utils'
+    '@nuxt/image'
   ]
 })
