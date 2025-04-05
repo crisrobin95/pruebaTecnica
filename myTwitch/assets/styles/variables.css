@@ -1,0 +1,45 @@
+:root {
+  --c-black: #000000;
+  --c-semi-black: #0d0d0d;
+  --c-red: red;
+  --c-white: #ffffff;
+  --c-graphite: #1a1a1a;
+  --c-light-graphite: #f0f0f0;
+  --c-grey-light: #f0f0f0;
+  --c-grey-medium: #707070;
+  --c-blackNavy: #18181B;
+
+  --c-static-black: #000000;
+  --c-static-white: #ffffff;
+  --c-static-graphite: #1a1a1a;
+  --c-static-grey-light: #f0f0f0;
+
+  --f-font-thin: 'neulis-sans-thin';
+  --f-font-extraLight: 'neulis-sans-extra-light';
+  --f-font-light: 'neulis-sans-light';
+  --f-font-regular: 'neulis-sans-regular';
+  --f-font-medium: 'neulis-sans-medium';
+  --f-font-semiBold: 'neulis-sans-semi-bold';
+  --f-font-bold: 'neulis-sans-bold';
+  --f-font-extraBold: 'neulis-sans-extra-bold';
+  --f-font-black: 'neulis-sans-black';
+
+  --s-border-radius-button: 0.25rem;
+  --s-border-radius-card: 0.625rem;
+  --s-font-h1: 3rem;
+  --s-font-h2: 3rem;
+  --s-font-h3: 2rem;
+  --s-font-h4: 1.5rem;
+  --s-font-p: 1rem;
+  --s-font-small: 0.875rem;
+  --s-font-cta: 1rem;
+  --s-font-h1-mobile: 2rem;
+  --s-font-h2-mobile: 2rem;
+  --s-font-h3-mobile: 1.5rem;
+  --s-font-h4-mobile: 1.3125rem;
+  --s-margin-blocks: 8rem;
+  --s-padding-lateral: 8rem;
+  --s-padding-lateral-mobile: 1rem;
+
+  --t-transition-button: 0.3s;
+}
