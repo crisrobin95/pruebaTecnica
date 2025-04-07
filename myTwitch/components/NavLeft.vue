@@ -20,8 +20,7 @@
         &__points{
             margin-left: 0.9em;
             width: 1em;
-            height: 1em;
-           
+            height: 1em; 
         }
 
         &__icon{

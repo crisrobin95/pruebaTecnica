@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 
 </script>
 <template>
@@ -7,11 +7,16 @@
         <NavLeft/>
         <NavCenter/>
         <NavRigth/>
+        
     </nav>
     <div class="page">
-        <main class="main">
-            <SectionsMain/>
-        </main>
+        <aside class="page__box">
+            <RecomendedStreams/>
+        </aside>
+        <section>
+            <MainStreams/>
+        </section>
+       
     </div>
 
 </template>
@@ -29,14 +34,14 @@
         width: 100%;       
     }
 
-    .page-container {
+    .page {
+        @include responsive;
         display: flex;
-        max-width: 95.625em;
-        height: 141.688em;
-        margin: auto;
-        justify-content: space-evenly;
-        margin-top: 1.25em;
-        padding: 0 1.25rem;
+        background-color: black;
+        max-width:auto;
+        min-height: 100vh;
+       
+        
     }
     
 </style>

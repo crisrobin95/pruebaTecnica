@@ -15,12 +15,16 @@
     .search{
         display: flex;
         @include responsive;
+        align-items: center;
 
         &__text{
             border: solid 0.2em #67676b;
             background-color:  var(--c-blackNavy);
             color: white;
             margin-left: 1em;
+            border-radius: 0.5em;
+            padding: 0.1em;
+            
         }
 
         &__button{

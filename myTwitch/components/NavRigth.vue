@@ -18,6 +18,7 @@
 <style lang="scss" scoped>
     .notification{
         display: flex;
+        align-items: center;
         @include responsive;
         &__icon{
             margin-left: 0.5em;
@@ -29,7 +30,6 @@
             background-color: #2F2F35;
             color: white;
             border-radius: 0.2em;
-            width: auto;
             padding: 0.2em;
         }
 
@@ -38,7 +38,7 @@
             background-color: #199AFC;
             color: white;
             border-radius: 0.2em;
-            width: auto;
+          
             padding: 0.2em;
         }
         &__profile{

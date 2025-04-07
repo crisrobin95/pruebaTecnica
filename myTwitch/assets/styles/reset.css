@@ -24,7 +24,7 @@
 
 ::-webkit-scrollbar-thumb {
   width: 100%;
-  background: var(--c-primary);
+  background: var(--c-red);
   border-radius: 0.25em;
 
   @media (max-width: 53.625em) {
