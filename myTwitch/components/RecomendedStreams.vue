@@ -1,62 +1,102 @@
-
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { twitchAPIClient } from '~/utils/twitchApi';
-const streamData = ref<any[] | null>(null); 
+const streamData = ref<any[] | null>(null);
 const error = ref<Error | null>(null);
+  const limit = 5;
 
 onMounted(async () => {
   try {
-    const datos = await twitchAPIClient.fetch<any>('streams')
-    // const users= await twitchAPIClient.fetch<any>('users')
-      streamData.value = datos.data 
-
+    const datos = await twitchAPIClient.fetch<any>('streams');
+    streamData.value = datos.data;
   } catch (err: any) {
     error.value = err;
   }
 });
-
 </script>
 
 <template>
-
-<div class="recomended-streams">
-<div v-if="streamData && streamData.length > 0">
-  <div v-for="stream in streamData.slice(0, 5)" :key="stream.id">
-    <img class="recomended-streams__img" :src="stream.thumbnail_url.replace('{width}x{height}', '10x10')" alt="Stream Thumbnail" />
-    <p class="recomended-streams__text"> {{ stream.user_name }}</p>
-    <p class="recomended-streams__text"> {{ stream.viewer_count }}</p>
-    <hr />
-  </div>
-</div>
-<div v-else-if="streamData && streamData.length === 0">
-  <p>No streams available.</p>
-</div>
-<div v-if="error">
-  <p>Error: {{ error.message }}</p>
-</div>
-</div>
+  <aside class="recomended-streams">
+    <h2 class="recomended-streams__title">Recommended Streams</h2>
+    <div v-if="streamData && streamData.length > 0">
+      <article v-for="stream in streamData.slice(0, limit)" :key="stream.id" class="recomended-streams__item">
+        <img
+          class="recomended-streams__img"
+          :src="stream.thumbnail_url.replace('{width}x{height}', '30x30')"
+          :alt="`Thumbnail of ${stream.user_name}'s stream`"
+        />
+        <div class="recomended-streams__info">
+          <h3 class="recomended-streams__user-name">{{ stream.user_name }}</h3>
+          <p class="recomended-streams__viewers">{{ stream.viewer_count }}</p>
+        </div>
+      </article>
+    </div>
+    <div v-else-if="streamData && streamData.length === 0">
+      <p class="recomended-streams__message">No streams available.</p>
+    </div>
+    <div v-if="error">
+      <p class="recomended-streams__error">Error: {{ error.message }}</p>
+    </div>
+  </aside>
 </template>
 
-
 <style lang="scss" scoped>
-
 .recomended-streams {
-    @include responsive;    
+  @include responsive;
+  background-color: #121212; 
+  color: white;
+  padding: 1em;
+  width: 16.25em; 
+  border-radius: 0.5em; 
+
+  &__title {
+    font-size: 0.8125em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+  }
+
+  &__item {
     display: flex;
-    color: white;
-    height: 22.25rem;
-    padding: 0 1.25em;
-    width: 16.25em;
-    margin: 0.5em;
-    padding: 0.5em;
+    align-items: center;
+    margin-bottom: 1em;
+  }
 
+  &__img {
+    width: 2.5em; 
+    height: 2.5em;
+    border-radius: 2em;
+    margin-right: 1em;
+    object-fit: cover; 
+  }
 
+  &__info {
+    flex-grow: 1;
+  }
 
-      &__img {
-        border-radius: 50%;
-        margin-right: 0.5em;
-      }
-    }
+  &__user-name {
+    font-weight: bold;
+    margin-bottom: 0.2em;
+    font-size: 0.8125em;
+  }
 
+  &__viewers {
+    font-size: 0.8125em;
+    color: #999; 
+
+  &__viewer-count {
+    margin-left: auto;
+    color: #f00;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+
+  
+  }
+
+  &__message,
+  &__error {
+    text-align: center;
+  }
+}
+}
 </style>

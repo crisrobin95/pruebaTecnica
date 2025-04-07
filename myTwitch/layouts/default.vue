@@ -36,13 +36,8 @@
     }
 
     .page {
-        @include responsive;
         display: flex;
         background-color: black;
-        max-width:auto;
-        min-height: 100vh;
-       
-        
     }
     
 </style>
