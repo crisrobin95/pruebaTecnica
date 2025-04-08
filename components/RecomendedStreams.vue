@@ -1,24 +1,35 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { twitchAPIClient } from '~/utils/twitchApi';
-const streamData = ref<any[] | null>(null);
-const error = ref<Error | null>(null);
+  import { ref, onMounted } from 'vue';
+  import { twitchAPIClient } from '~/utils/twitchApi';
+  const streamData = ref<any[] | null>(null);
+  const error = ref<Error | null>(null);
   const limit = 5;
+  const isPanelVisible = ref(true); 
 
-onMounted(async () => {
-  try {
-    const datos = await twitchAPIClient.fetch<any>('streams');
-    streamData.value = datos.data;
-  } catch (err: any) {
-    error.value = err;
-  }
-});
+  const togglePanelVisibility = () => {
+    isPanelVisible.value = !isPanelVisible.value;
+  };
+
+
+  onMounted(async () => {
+    try {
+      const datos = await twitchAPIClient.fetch<any>('streams');
+      streamData.value = datos.data;
+    } catch (err: any) {
+      error.value = err;
+    }
+  });
 </script>
 
 <template>
+  
   <aside class="recomended-streams">
-    <h2 class="recomended-streams__title">Recommended Streams</h2>
-    <button class="recomended-streams__ocult"></button>
+    <button class="ocult" @click="togglePanelVisibility">
+      <SvgIconOcult class="recomended-streams__ocult--button" ></SvgIconOcult>
+    </button>
+    
+    <section v-if="isPanelVisible"> 
+    <h2 class="recomended-streams__title" >Recommended Streams</h2>
     <div v-if="streamData && streamData.length > 0">
       <article v-for="stream in streamData.slice(0, limit)" :key="stream.id" class="recomended-streams__item">
         <img
@@ -38,22 +49,33 @@ onMounted(async () => {
     <div v-if="error">
       <p class="recomended-streams__error">Error: {{ error.message }}</p>
     </div>
+    </section>
   </aside>
 </template>
 
 <style lang="scss" scoped>
+  .ocult{
+    display: flex;
+    background-color: transparent;
+
+  }
 .recomended-streams {
   @include responsive;
+  display: flex;
   background-color: #121212; 
   color: white;
   padding: 1em;
   width: 16.25em; 
   border-radius: 0.5em; 
+  overflow: hidden; 
+  width: auto;
+
 
   &__title {
     font-size: 0.8125em;
     margin-bottom: 0.5em;
     font-weight: bold;
+    flex-grow: 1;
   }
 
   &__item {

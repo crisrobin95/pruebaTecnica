@@ -18,10 +18,13 @@
 <style lang="scss" scoped>
     .notification{
         display: flex;
+        
         @include responsive;
+        
         &__icon{
             margin-left: 0.5em;
             background-color: transparent;
+            cursor: pointer;
         }
 
         &__log{
@@ -31,6 +34,7 @@
             border-radius: 0.2em;
             width: auto;
             padding: 0.2em;
+            cursor: pointer;
         }
 
         &__sing{
@@ -40,10 +44,12 @@
             border-radius: 0.2em;
             width: auto;
             padding: 0.2em;
+            cursor: pointer;
         }
         &__profile{
             margin-left: 0.5em;
             background-color: transparent;
+            cursor: pointer;
         }
 
     }

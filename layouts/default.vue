@@ -35,6 +35,7 @@
         }
 
         .page {
+            @include responsive;    
             display: flex;
             background-color: black;
             height: 100vh;
