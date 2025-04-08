@@ -33,7 +33,7 @@
         &__title{
             font-family: Roobert;
             font-weight: 700;
-            font-size: 0.81em;
+            font-size: 1.5em;
             line-height: 0.97em;
             letter-spacing: 0%;
             vertical-align: middle;

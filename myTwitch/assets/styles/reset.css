@@ -7,6 +7,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: Inter;
 }
 
 
@@ -16,7 +17,7 @@
   width: 0.4375em;
   height: auto;
   border-radius: 0.25em;
-  background-color: var(--c-black);
+  background-color: var(--c-red);
   @media (max-width: 53.625em) {
     width: 0;
   }
