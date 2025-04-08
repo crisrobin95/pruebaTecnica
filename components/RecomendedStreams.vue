@@ -18,6 +18,7 @@ onMounted(async () => {
 <template>
   <aside class="recomended-streams">
     <h2 class="recomended-streams__title">Recommended Streams</h2>
+    <button class="recomended-streams__ocult"></button>
     <div v-if="streamData && streamData.length > 0">
       <article v-for="stream in streamData.slice(0, limit)" :key="stream.id" class="recomended-streams__item">
         <img

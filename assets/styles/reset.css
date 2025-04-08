@@ -17,7 +17,7 @@
   width: 0.4375em;
   height: auto;
   border-radius: 0.25em;
-  background-color: var(--c-red);
+  background-color: var( --c-icon-main);
   @media (max-width: 53.625em) {
     width: 0;
   }
