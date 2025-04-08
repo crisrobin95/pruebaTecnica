@@ -13,7 +13,11 @@
 
 <style lang="scss" scoped>
     .cards{
-        color: white;
+        @include responsive;
+         display: flex;
+         color: white;
+         
+ 
     }
   
 </style>

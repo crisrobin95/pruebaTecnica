@@ -1,43 +1,43 @@
 
-<script setup lang="ts">
+    <script setup lang="ts">
 
-</script>
-<template>
-    
-    <nav class="menu">
-        <NavLeft/>
-        <NavCenter/>
-        <NavRigth/>
+    </script>
+    <template>
         
-    </nav>
-    <div class="page">
-        <aside class="page__box">
-            <RecomendedStreams/>
-        </aside>
-        <section>
-            <MainStreams/>
-        </section>
-       
-    </div>
+        <nav class="menu">
+            <NavLeft/>
+            <NavCenter/>
+            <NavRigth/>
+            
+        </nav>
+        <div class="page">
+            <aside class="page__box">
+                <RecomendedStreams/>
+            </aside>
+            <section>
+                <MainStreams/>
+            </section>
+        
+        </div>
 
-</template>
+    </template>
 
-<style lang="scss" scoped>
-   .menu {
-        @include responsive;
-        display: flex;
-        color: white;
-        background-color:  var(--c-blackNavy);
-        height: 2.5em;
-        justify-content: space-between;
-        align-items: center; 
-        padding: 0 1.25em; 
-        width: 100%;       
-    }
+    <style lang="scss" scoped>
+    .menu {
+            @include responsive;
+            display: flex;
+            color: white;
+            background-color:  var(--c-blackNavy);
+            height: 2.5em;
+            justify-content: space-between;
+            align-items: center; 
+            padding: 0 1.25em;     
+        }
 
-    .page {
-        display: flex;
-        background-color: black;
-    }
-    
-</style>
+        .page {
+            display: flex;
+            background-color: black;
+            height: 100vh;
+        }
+        
+    </style>
