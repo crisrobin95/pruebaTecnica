@@ -101,9 +101,21 @@
     }
   }
 
+  
+
   .swiper-button-disabled {
     display: none;
   }
+}
+@mixin fontChannels(){
+  font-family: Roobert;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21.6px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: var(--c-icon-main);
+
 }
 
 @mixin simpleBox(){

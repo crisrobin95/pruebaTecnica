@@ -19,7 +19,6 @@
         &__text{
             border: solid 0.2em #67676b;
             background-color:  var(--c-blackNavy);
-            color: white;
             margin-left: 1em;
         }
 

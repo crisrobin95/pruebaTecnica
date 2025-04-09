@@ -5,19 +5,23 @@
 </script>
 
 <template>
-    <div class="cards">
-        <StreamsCardsTheCards />
-    </div>
+    <section class="main-cards">
+        <aside>
+            <StreamsCardsTheTittle class="cards__tittle"/>
+        </aside>
+        <section class="cards">
+            <StreamsCardsTheCards class="cards__users"/>
+        </section>
+    </section>
+        
+    
 </template>
-
+    
 
 <style lang="scss" scoped>
-    .cards{
-        @include responsive;
-         display: flex;
-         color: white;
-         
- 
+    .mains-cards{
+        
+        padding-top: 1em;
     }
   
 </style>

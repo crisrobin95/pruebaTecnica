@@ -8,14 +8,18 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-family: Inter;
+  color: var( --c-static-white);
+
+    
 }
 
-
+body{
+  background-color: black;
+}
 
 
 ::-webkit-scrollbar {
   width: 0.4375em;
- 
   background-color: var( --c-black);
   @media (max-width: 53.625em) {
     width: 0;
