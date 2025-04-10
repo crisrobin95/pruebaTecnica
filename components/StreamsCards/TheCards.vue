@@ -35,6 +35,7 @@ onMounted(async () => {
       :alt="`Thumbnail of ${users.display_name}'s stream`"
       class="users__img"
     />
+
     <p class="users__name">{{ users.display_name }}</p>
     <button class="users__tags">{{ users.tags }}</button>
     
