@@ -11,27 +11,37 @@
       <RecomendedStreams />
     </aside>
     <section class="page__streams">
-      <MainStreams />
+      <StreamsCardsTheTittle />
+      <article class="page__cards">
+        <StreamsCardsTheCards />
+      </article>
     </section>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .menu {
-  @include responsive;
   display: flex;
   background-color: var(--c-blackNavy);
-  height: 2.5em;
+  height: 2em;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1.25em;
+  padding: 1.3em;
 }
 
 .page {
-  @include responsive;
   display: flex;
-  background-color: black;
-  width: 100%;
-  height: 100%;
+  padding: 0.5em;
+  width: 95.62em;
+  height: 137.31em;
+  gap: 0.62em;
+
+  &__cards {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 19.9em;
+    gap: 0.5em;
+  }
 }
 </style>

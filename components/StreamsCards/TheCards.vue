@@ -1,97 +1,81 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import type { User, Streams } from '~/types/typesPoryect.ts'
-import { twitchAPIClient } from '~/utils/twitchApi'
-const userData = ref<User[] | null>(null)
-const streamData = ref<Streams[] | null>(null)
-const error = ref<Error | null>(null)
+import { useTwitchData } from '~/composables/useTwitch'
+
 const limit = 4
-onMounted(async () => {
-  try {
-    const streamsData = await twitchAPIClient.fetch<any>(
-      `streams?first=${limit}&language=es`,
-    )
-    const streams = streamsData.data
-    streamData.value = streams
-    const logins = streams.map((stream: any) => stream.user_login)
-    const query = logins.map((login: string) => `login=${login}`).join('&')
-    const datos = await twitchAPIClient.fetch<any>(`users?${query}`)
-    userData.value = datos.data
-  } catch (err: any) {
-    error.value = err
-  }
-})
+const { userData, streamData, error, loading } = useTwitchData(limit)
 </script>
 
 <template>
   <section
+    class="streams-items"
+    v-if="!loading && userData && streamData"
     v-for="(users, index) in userData?.slice(0, limit)"
     :key="users.id"
-    class="users"
   >
     <img
+      class="streams-items__stream-img"
       v-if="streamData && streamData[index]"
       :src="streamData[index].thumbnail_url.replace('{width}x{height}', '125x125')"
       :alt="`Stream thumbnail of ${users.display_name}`"
-      class="users__img-stream"
     />
-
-    <article class="users__article">
+    <section class="streams-items__info">
       <img
-        :src="users.profile_image_url.replace('{width}x{height}', '100x100')"
+        :src="users.profile_image_url.replace('{width}x{height}', '20x20')"
         :alt="`Thumbnail of ${users.display_name}'s stream`"
-        class="users__img"
+        class="streams-items__icon-channel"
       />
-      <p class="users__name">{{ users.display_name }}</p>
-      <div v-if="streamData && streamData[index] && streamData[index].tags">
-        <p class="users__title">
-          {{ streamData[index].title }}
+      <article class="streams-items__details">
+        <h1 class="streams-items__title">
+          {{ streamData[index].title.slice(0, 40) }}
+        </h1>
+        <p class="streams-items__name-channel">
+          {{ users.display_name }}
+        </p>
+        <p lcass="streams-items__category">
+          {{ streamData[index].game_name }}
         </p>
         <button
           v-for="tag in streamData[index].tags.slice(0, 4)"
           :key="tag"
-          class="users__tags"
+          class="streams-items__tags"
         >
           {{ tag }}
         </button>
-      </div>
-    </article>
+      </article>
+    </section>
   </section>
 </template>
 
 <style lang="scss" scoped>
-.users {
-  @include responsive;
+.streams-items {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 1em;
-  width: 15em;
-  &__img-stream {
-    width: 10em;
-    height: 10em;
+
+  &__stream-img {
+    width: 18em;
+    height: 19em;
   }
-  &__article {
-    align-items: center;
-    justify-content: space-around;
-    width: auto;
-    height: auto;
-  }
-  &__img {
-    width: 2.68em;
-    height: 2.68em;
-    border-radius: 62499.93em;
-    margin-right: 1em;
+  &__info {
+    display: flex;
+    align-items: flex-start;
+    gap: 1em;
   }
 
+  &__icon-channel {
+    height: 2.68em;
+    width: 2.68em;
+    border-radius: 50%;
+  }
   &__tags {
-    width: auto;
-    background-color: transparent;
-    height: auto;
-    border: solid 0.05em white;
-    padding: 0.5em;
-    margin-left: 0.5em;
+    background-color: #8a7b7bb4;
+
     border-radius: 1em;
-    background-color: rgba(137, 122, 122, 0.704);
+    height: auto;
+    margin-left: 0.5em;
+    padding: 0.5em;
+    width: auto;
   }
 }
 </style>
