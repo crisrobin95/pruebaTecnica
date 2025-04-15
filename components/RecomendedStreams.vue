@@ -54,21 +54,22 @@ const togglePanelVisibility = () => {
 <style lang="scss" scoped>
 .mains {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1em;
+  width: max-content;
+  gap: 0.5em;
+}
+.title {
+  display: flex;
+  width: 100%;
 }
 
 .ocult {
   background-color: transparent;
 }
-.title {
-  display: flex;
-}
+
 .recomended-streams {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: #121212;
   padding: 0.5em;
   width: auto;
@@ -78,17 +79,12 @@ const togglePanelVisibility = () => {
 
   &__box {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    align-items: flex-start;
+    justify-content: space-evenly;
     width: auto;
     height: auto;
     margin-top: 1em;
   }
-  &__name {
-    width: auto;
-    margin: 0.5em;
-  }
-
   &__img {
     width: 1.8em;
     height: 1.8em;
@@ -97,10 +93,11 @@ const togglePanelVisibility = () => {
   }
   &__viewrs {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
   &__point-viewers {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 0.2em;
   }

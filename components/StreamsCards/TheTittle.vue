@@ -1,8 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+interface Props {
+  title?: string
+  description?: String
+}
+
+const props = defineProps<Props>()
+const descriptionDefault = 'we think you’ll like'
+</script>
 <template>
   <section class="container">
-    <p class="channels">Live channels</p>
-    <p class="sugerens">we think you’ll like</p>
+    <p class="channels">{{ props.title }}</p>
+    <p class="sugerens">{{ props.description || descriptionDefault }}</p>
   </section>
 </template>
 
