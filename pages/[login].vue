@@ -9,7 +9,7 @@ console.log('el valor de login es: ', login)
     <h1>Viendo el stream de {{ login }}</h1>
     <iframe
       v-if="login"
-      :src="`https://player.twitch.tv/?channel=${login}&parent=prueba-tecnica-cyan-omega.vercel.`"
+      :src="`https://player.twitch.tv/?channel=${login}&parent=prueba-tecnica-cyan-omega.vercel.app`"
       height="715"
       width="100%"
       frameborder="0"
