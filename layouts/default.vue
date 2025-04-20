@@ -6,7 +6,10 @@
     <NavCenter />
     <NavRigth />
   </nav>
-  <slot></slot>
+  <aside class="recomended">
+    <RecomendedStreams />
+    <slot></slot>
+  </aside>
 </template>
 
 <style lang="scss" scoped>
@@ -14,8 +17,16 @@
   display: flex;
   background-color: var(--c-blackNavy);
   height: 2em;
+  width: 99vw;
   justify-content: space-between;
   align-items: center;
   padding: 1.3em;
+}
+.recomended {
+  display: flex;
+  align-items: flex-start;
+  padding: 0.5em;
+  width: 100vw;
+  height: 137.31em;
 }
 </style>

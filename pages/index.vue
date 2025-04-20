@@ -2,35 +2,43 @@
 
 <template>
   <div class="page">
-    <aside class="page__box">
-      <RecomendedStreams />
-    </aside>
     <section class="page__streams">
       <StreamsCardsTheTittle :title="'Live channels'" />
       <article class="page__cards">
         <StreamsCardsTheCards />
       </article>
-      <StreamsCardsTheDivider />
-      <StreamsCardsTheTittle :title="'Category'" />
+      <div class="page__division">
+        <StreamsCardsTheDivider />
+      </div>
+      <section class="page__category">
+        <StreamsCardsTheTittle :title="'Category'" />
+        <StreamsCardsTheCategory />
+      </section>
+      <StreamsCardsTheBoxe />
     </section>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .page {
-  display: flex;
-  padding: 0.5em;
-  width: 10em;
-  height: 137.31em;
-  gap: 0.62em;
+  width: 76.25em;
+  height: 132.6em;
+  gap: 1.25em;
+
+  &__streams {
+    width: fit-content;
+  }
 
   &__cards {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 23.8em;
-    height: 19.9em;
-    gap: 0.625em;
+    align-self: start;
+    justify-content: space-between;
+    width: fit-content;
+  }
+  &__category {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 @media (min-width: 1281px) {
@@ -40,6 +48,13 @@
 
   .page__cards {
     width: 100%;
+  }
+  .page__streams {
+    width: 100%;
+  }
+  .page__category {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 </style>

@@ -1,10 +1,10 @@
 import { ref, onMounted } from 'vue'
-import type { User, Streams } from '~/types/typesPoryect'
+import type { User, Streams, Games } from '~/types/typesPoryect'
 import { twitchAPIClient } from '~/utils/twitchApi'
 
 export function useTwitchData(limit: number) {
-  const userData = ref<User[] | null>(null)
-  const streamData = ref<Streams[] | null>(null)
+  const userData = ref<User[]>([])
+  const streamData = ref<Streams[]>([])
   const error = ref<Error | null>(null)
   const loading = ref<boolean>(true)
 
@@ -30,6 +30,34 @@ export function useTwitchData(limit: number) {
   return {
     userData,
     streamData,
+    error,
+    loading,
+  }
+}
+
+export function useTwitchTopCategories(limit: number = 4) {
+  const topCategories = ref<Games[]>([])
+  const error = ref<Error | null>(null)
+  const loading = ref<boolean>(true)
+
+  onMounted(async () => {
+    loading.value = true
+    try {
+      const categoriesData = await twitchAPIClient.fetch<any>(`games/top?first=${limit}`)
+      topCategories.value = categoriesData.data.map((game: any) => ({
+        id: game.id,
+        name: game.name,
+        box_art_url: game.box_art_url,
+      }))
+      loading.value = false
+    } catch (err: any) {
+      error.value = err
+      loading.value = false
+    }
+  })
+
+  return {
+    topCategories,
     error,
     loading,
   }

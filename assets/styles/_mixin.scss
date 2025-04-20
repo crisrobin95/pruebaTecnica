@@ -134,6 +134,21 @@
   overflow: hidden;
 }
 
+@mixin styleBoxes {
+  background-color: var(--c-icon-main);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.3em;
+    width: 13.75em;
+    height: 2.8125em;
+    border-radius: 0.375em;
+}
+@mixin imgBoxes {
+  width: 4.9375em;
+    height: 4.3125em;
+    padding-right: 0.625em;
+}
 @mixin blog-cards() {
   &__title-common {
     padding: 0 var(--s-padding-lateral);

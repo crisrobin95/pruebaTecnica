@@ -1,11 +1,13 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="nav">
-    <SvgIconMain class="nav__icon" />
-    <h1 class="nav__title">MIDTUCH</h1>
-    <SvgIconPoints class="nav__points" />
-  </div>
+  <NuxtLink :to="`/`">
+    <div class="nav">
+      <SvgIconMain class="nav__icon" />
+      <h1 class="nav__title">MIDTUCH</h1>
+      <SvgIconPoints class="nav__points" />
+    </div>
+  </NuxtLink>
 </template>
 
 <style lang="scss" scoped>
