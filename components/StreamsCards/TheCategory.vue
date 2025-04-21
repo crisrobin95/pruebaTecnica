@@ -14,7 +14,7 @@ const { topCategories, error, loading } = useTwitchTopCategories(limit)
         :src="category.box_art_url.replace('{width}x{height}', '285x380')"
         alt="category port"
       />
-      <h3>{{ category.name }}</h3>
+      <h3>{{ category.name.slice(0, 15) }}</h3>
     </div>
     <div v-if="error">{{ error }}</div>
   </section>
@@ -23,9 +23,11 @@ const { topCategories, error, loading } = useTwitchTopCategories(limit)
 <style lang="scss" scoped>
 .category-cards {
   display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
   gap: 0.3em;
+  padding: 0.5em;
   &__port {
     width: 11.35em;
     height: 15.1em;

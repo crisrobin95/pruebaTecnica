@@ -144,6 +144,37 @@
     height: 2.8125em;
     border-radius: 0.375em;
 }
+
+@mixin font-medium {
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 0.875em;
+  line-height: 1.05em;
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+
+@mixin font-small{
+  font-family: Inter;
+    font-weight: 400;
+    font-size: 0.87em;
+    line-height: 1.31em;
+    letter-spacing: 0%;
+    vertical-align: middle;
+}
+
+@mixin tag {
+  background-color: #8a7b7bb4;
+  border-radius: 1em;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5em;
+  gap: 0.5em;
+}
+
+
+
+
 @mixin imgBoxes {
   width: 4.9375em;
     height: 4.3125em;
@@ -174,4 +205,5 @@
       opacity: 0.6;
     }
   }
+  
 }

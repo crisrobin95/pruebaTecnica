@@ -30,7 +30,7 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
             {{ streamData[index].title.slice(0, 40) }}
           </h1>
           <p class="streams-items__name-channel">
-            {{ users.display_name }}
+            {{ users.display_name }}<SvgIconVerified />
           </p>
           <p class="streams-items__category">
             {{ streamData[index].game_name }}
@@ -70,13 +70,7 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
     text-decoration: none;
   }
   &__title {
-    font-family: Inter;
-    font-weight: 600;
-    font-size: 0.87em;
-    line-height: 1.05em;
-    letter-spacing: 0%;
-    vertical-align: middle;
-    text-transform: uppercase;
+    @include font-medium;
   }
   &__details {
     display: flex;
@@ -94,13 +88,7 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
   }
   &__name-channel {
     color: rgba(173, 173, 184, 1);
-
-    font-family: Inter;
-    font-weight: 400;
-    font-size: 0.81rem;
-    line-height: 1.21rem;
-    letter-spacing: 0%;
-    vertical-align: middle;
+    @include font-small;
   }
 
   &__icon-channel {
@@ -109,11 +97,7 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
     border-radius: 50%;
   }
   &__tags {
-    background-color: #8a7b7bb4;
-    border-radius: 1em;
-    width: fit-content;
-    padding: 0.5em;
-    gap: 0.5em;
+    @include tag;
   }
 }
 </style>

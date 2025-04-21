@@ -16,6 +16,13 @@
       </section>
       <StreamsCardsTheBoxe />
     </section>
+    <StreamsCardsTheTittle :title="'Live channels'" />
+    <article class="page__cards">
+      <StreamsCardsTheCards />
+    </article>
+    <div class="page__division">
+      <StreamsCardsTheDivider />
+    </div>
   </div>
 </template>
 
@@ -27,6 +34,7 @@
 
   &__streams {
     width: fit-content;
+    margin-top: 1em;
   }
 
   &__cards {

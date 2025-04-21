@@ -62,3 +62,48 @@ export function useTwitchTopCategories(limit: number = 4) {
     loading,
   }
 }
+
+export function useTwitchUser(login: string) {
+  const userData = ref<User | null>(null)
+  const streamData = ref<Streams | null>(null)
+  const error = ref<Error | null>(null)
+  const loading = ref<boolean>(true)
+  const startTime = ref<Date | null>(null)
+
+  onMounted(async () => {
+    loading.value = true
+    error.value = null
+    try {
+      const usersData = await twitchAPIClient.fetch<any>(`users?login=${login}`)
+      if (usersData.data.length > 0) {
+        userData.value = usersData.data[0]
+        const streamsData = await twitchAPIClient.fetch<any>(
+          `streams?user_login=${login}`,
+        )
+        if (streamsData.data.length > 0) {
+          streamData.value = streamsData.data[0]
+          startTime.value = new Date(streamsData.data[0].started_at)
+        } else {
+          streamData.value = null
+          startTime.value = null
+        }
+      } else {
+        userData.value = null
+        streamData.value = null
+        startTime.value = null
+      }
+      loading.value = false
+    } catch (err: any) {
+      error.value = err
+      loading.value = false
+    }
+  })
+
+  return {
+    userData,
+    streamData,
+    error,
+    loading,
+    startTime,
+  }
+}

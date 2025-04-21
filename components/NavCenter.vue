@@ -14,6 +14,7 @@
 
   &__text {
     border: solid 0.2em #67676b;
+    padding: 0.5em;
     background-color: var(--c-blackNavy);
     margin-left: 1em;
   }

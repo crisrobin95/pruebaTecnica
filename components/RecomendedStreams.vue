@@ -102,11 +102,7 @@ const formatViewers = (viewCount: number | undefined): string => {
     display: flex;
     align-items: center;
     text-decoration: none;
-    font-family: Inter;
-    font-weight: 600;
-    font-size: 0.87em;
-    line-height: 1.05em;
-    align-items: center;
+    @include font-medium;
   }
   &__img {
     display: flex;
