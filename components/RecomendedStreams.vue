@@ -9,6 +9,16 @@ const isPanelVisible = ref(true)
 const togglePanelVisibility = () => {
   isPanelVisible.value = !isPanelVisible.value
 }
+const formatViewers = (viewCount: number | undefined): string => {
+  if (viewCount === undefined) {
+    return ''
+  }
+  if (viewCount >= 1000) {
+    const thousands = (viewCount / 1000).toFixed(1)
+    return `${thousands}k`
+  }
+  return String(viewCount)
+}
 </script>
 
 <template>
@@ -31,16 +41,18 @@ const togglePanelVisibility = () => {
         :alt="`Thumbnail of ${user.display_name}'s stream`"
         class="recomended-streams__img"
       />
-      <p class="recomended-streams__name" v-if="isPanelVisible">
-        {{ user.display_name.slice(0, 10) }}
-      </p>
+      <NuxtLink :to="`/${user.login}`" class="recomended-streams__link">
+        <p class="recomended-streams__name" v-if="isPanelVisible">
+          {{ user.display_name.slice(0, 8) }}
+        </p>
+      </NuxtLink>
       <section v-if="isPanelVisible" class="recomended-streams__point-viewers">
         <SvgIconOnline class="recomended-streams__point-viewers--point-red" />
         <p
           class="recomended-streams__point-viewers--count"
-          v-if="streamData[index] && streamData[index].viewer_count && isPanelVisible"
+          v-if="streamData[index] && streamData[index].viewer_count"
         >
-          {{ String(streamData[index].viewer_count).slice(0, 5) }}
+          {{ formatViewers(streamData[index].viewer_count) }}
         </p>
       </section>
     </section>
@@ -69,37 +81,61 @@ const togglePanelVisibility = () => {
 .recomended-streams {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   background-color: #121212;
   padding: 0.5em;
-  width: auto;
+  width: fit-content;
+  height: 24.94em;
   border-radius: 0.5em;
-  height: auto;
   margin-right: 1em;
 
   &__box {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-evenly;
     width: auto;
-    height: auto;
-    margin-top: 1em;
+    height: 2.5em;
+    justify-content: space-between;
+    padding-top: 0.3125rem;
+    padding-right: 0.625rem;
+    padding-bottom: 0.3125rem;
+    padding-left: 0.625rem;
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 0.87em;
+    line-height: 1.05em;
+    align-items: center;
   }
   &__img {
+    display: flex;
+    align-items: center;
     width: 1.8em;
     height: 1.8em;
     border-radius: 50%;
-    justify-content: center;
+    justify-content: flex-start;
   }
+
   &__viewrs {
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
   &__point-viewers {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     gap: 0.2em;
+    &--count {
+      display: flex;
+
+      font-family: Inter;
+      font-weight: 400;
+      font-size: 0.81rem;
+      line-height: 1.21em;
+      letter-spacing: 0%;
+      vertical-align: middle;
+    }
   }
 }
 </style>

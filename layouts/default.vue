@@ -24,9 +24,7 @@
 }
 .recomended {
   display: flex;
-  align-items: flex-start;
+  justify-content: space-between;
   padding: 0.5em;
-  width: 100vw;
-  height: 137.31em;
 }
 </style>

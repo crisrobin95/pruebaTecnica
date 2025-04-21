@@ -12,7 +12,7 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
     v-for="(users, index) in userData?.slice(0, limit)"
     :key="users.id"
   >
-    <NuxtLink :to="`/${users.login}`">
+    <NuxtLink :to="`/${users.login}`" class="streams-items__link">
       <img
         class="streams-items__stream-img"
         v-if="streamData && streamData[index]"
@@ -36,13 +36,15 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
             {{ streamData[index].game_name }}
           </p>
 
-          <button
-            v-for="tag in streamData[index]?.tags.slice(0, 3)"
-            :key="tag"
-            class="streams-items__tags"
-          >
-            {{ tag }}
-          </button>
+          <div class="buttons">
+            <button
+              v-for="tag in streamData[index]?.tags.slice(0, 3)"
+              :key="tag"
+              class="streams-items__tags"
+            >
+              {{ tag }}
+            </button>
+          </div>
         </article>
       </section>
     </NuxtLink>
@@ -55,11 +57,32 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
 </template>
 
 <style lang="scss" scoped>
+.buttons {
+  display: flex;
+}
 .streams-items {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   height: 19.9em;
+
+  &__link {
+    text-decoration: none;
+  }
+  &__title {
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 0.87em;
+    line-height: 1.05em;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    text-transform: uppercase;
+  }
+  &__details {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+  }
 
   &__stream-img {
     width: 23.8em;
@@ -68,7 +91,16 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
   &__info {
     display: flex;
     align-items: flex-start;
-    gap: 1em;
+  }
+  &__name-channel {
+    color: rgba(173, 173, 184, 1);
+
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 0.81rem;
+    line-height: 1.21rem;
+    letter-spacing: 0%;
+    vertical-align: middle;
   }
 
   &__icon-channel {

@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <NuxtLink :to="`/`">
+  <NuxtLink :to="`/`" class="link">
     <div class="nav">
       <SvgIconMain class="nav__icon" />
       <h1 class="nav__title">MIDTUCH</h1>
@@ -11,6 +11,9 @@
 </template>
 
 <style lang="scss" scoped>
+.link {
+  text-decoration: none;
+}
 .nav {
   display: flex;
   align-items: center;
