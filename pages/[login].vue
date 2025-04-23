@@ -1,10 +1,6 @@
 <script setup lang="ts">
 const route = useRoute()
 const login = route.params.login as string
-const isPanelVisible = ref(true)
-const togglePanelVisibility = () => {
-  isPanelVisible.value = !isPanelVisible.value
-}
 </script>
 
 <template>
@@ -27,11 +23,10 @@ const togglePanelVisibility = () => {
     </section>
     <section class="stream-page__chat-box">
       <iframe
-        :src="`https://www.twitch.tv/embed/${login}/chat?parent=prueba-tecnica-cyan-omega.vercel.app`"
+        :src="`https://www.twitch.tv/embed/${login}/chat?parent=prueba-tecnica-cyan-omega.vercel.app&darkpopout=true`"
         height="341"
         width=" 869"
         class="stream-page__chat-box--chat"
-        v-if="isPanelVisible"
       >
       </iframe>
     </section>
@@ -45,6 +40,7 @@ const togglePanelVisibility = () => {
   width: 51.6em;
   height: 54.3em;
   gap: 1.25em;
+  margin-top: 1em;
 
   &__stream-box {
     display: flex;
@@ -53,8 +49,6 @@ const togglePanelVisibility = () => {
     height: 54.31em;
     gap: 1.25em;
 
-    &--info {
-    }
     &--stream {
       background: rgba(25, 154, 252, 0.23);
       width: 51.6em;
@@ -67,21 +61,9 @@ const togglePanelVisibility = () => {
     gap: 2em;
     align-items: center;
 
-    &--button {
-      background: transparent;
-    }
-
-    &--bar {
-      display: flex;
-      justify-content: space-between;
-      width: auto;
-      height: 3em;
-      padding: 0.56em 0.62em 0.56em 0.62em;
-      gap: 5.18em;
-    }
     &--chat {
-      width: 21.31em;
-      height: 51.31em;
+      width: 26em;
+      height: 40em;
       padding-right: 0.56em;
       padding-left: 0.56em;
       gap: 0.62rem;

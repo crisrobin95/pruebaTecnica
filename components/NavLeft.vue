@@ -31,7 +31,7 @@
     margin-right: 1em;
   }
   &__title {
-    font-family: Roobert;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
     font-size: 1.5em;
     line-height: 0.97em;

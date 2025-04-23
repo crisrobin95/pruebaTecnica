@@ -28,8 +28,7 @@
 
 <style lang="scss" scoped>
 .page {
-  width: 76.25em;
-  height: 132.6em;
+  width: 100%;
   gap: 1.25em;
 
   &__streams {
@@ -42,6 +41,7 @@
     align-self: start;
     justify-content: space-between;
     width: fit-content;
+    padding-right: 0.5em;
   }
   &__category {
     display: flex;

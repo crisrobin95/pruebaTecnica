@@ -1,8 +1,4 @@
-@mixin responsive($size: 64em) {
-  @media (width <= $size) {
-    @content;
-  }
-}
+
 
 @mixin flex($direction: row, $align: center, $justify: center, $wrap: nowrap, $gap: 0) {
   display: flex;
@@ -108,7 +104,7 @@
   }
 }
 @mixin fontChannels(){
-  font-family: Roobert;
+  font-family: Arial;
   font-weight: 600;
   font-size: 18px;
   line-height: 21.6px;

@@ -84,7 +84,7 @@ const formatViewers = (viewCount: number | undefined): string => {
   background-color: #121212;
   padding: 0.5em;
   width: fit-content;
-  height: 24.94em;
+  height: fit-content;
   border-radius: 0.5em;
   margin-right: 1em;
 

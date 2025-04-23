@@ -21,25 +21,25 @@ const liveTime = computed(() => {
   }
   return ''
 })
-let intervalId: NodeJS.Timeout | null = null
+
+const intervalId = ref<NodeJS.Timeout | null>(null)
 
 onMounted(() => {
-  intervalId = setInterval(() => {
+  intervalId.value = setInterval(() => {
     now.value = new Date()
   }, 1000)
 })
 
 onUnmounted(() => {
-  if (intervalId) {
-    clearInterval(intervalId)
+  if (intervalId.value) {
+    clearInterval(intervalId.value)
   }
 })
-
 const { userData, streamData, startTime, error, loading } = useTwitchUser(props.login)
 </script>
 
 <template>
-  <section class="stream-info">
+  <div class="stream-info">
     <div v-if="loading">Cargando información...</div>
     <div v-if="error">Error al cargar la información: {{ error.message }}</div>
     <aside class="stream-info__box-img" v-if="userData">
@@ -75,15 +75,28 @@ const { userData, streamData, startTime, error, loading } = useTwitchUser(props.
           {{ tag }}</span
         >
       </div>
-      <article class="stream-info__about">About {{ userData.display_name }}</article>
+      <section class="stream-info__footer">
+        <article class="stream-info__footer--about">
+          About {{ userData.display_name }}
+        </article>
+        <section class="stream-info__footer--box" v-if="userData">
+          <p class="stream-info__footer--follows" v-if="userData">
+            {{ userData.view_count }}Follow
+          </p>
+          <p class="stream-info__footer--description" v-if="userData">
+            {{ userData.description }}
+          </p>
+        </section>
+      </section>
     </section>
-  </section>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 .stream-info {
   display: flex;
   padding: 0.3em;
+  width: 51.625rem;
 
   &__name {
     @include fontChannels;
@@ -150,9 +163,24 @@ const { userData, streamData, startTime, error, loading } = useTwitchUser(props.
       height: fit-content;
     }
   }
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
 
-  &__about {
-    gap: 5em;
+    &--about {
+      width: 50.375rem;
+      height: 1.375rem;
+      margin-bottom: 3em;
+    }
+    &--box {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      width: 46.5781rem;
+      background-color: rgba(24, 24, 27, 1);
+      padding: 1em;
+    }
   }
 }
 </style>

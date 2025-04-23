@@ -24,6 +24,7 @@
   align-items: center;
   padding: 1.3em;
 }
+
 .page {
   display: flex;
   &__recomended {

@@ -16,6 +16,7 @@ const descriptionDefault = 'we think you’ll like'
 
 <style lang="scss" scoped>
 .container {
+  @include fontChannels;
   display: flex;
   align-items: center;
   width: 16.5em;
