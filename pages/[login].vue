@@ -8,7 +8,7 @@ const login = route.params.login as string
     <section class="stream-page__stream-box">
       <iframe
         v-if="login"
-        :src="`https://player.twitch.tv/?channel=${login}&parent=localhost`"
+        :src="`https://player.twitch.tv/?channel=${login}&parent=prueba-tecnica-cyan-omega.vercel.app`"
         height="826"
         width="474"
         frameborder="0"
@@ -23,7 +23,7 @@ const login = route.params.login as string
     </section>
     <section class="stream-page__chat-box">
       <iframe
-        :src="`https://www.twitch.tv/embed/${login}/chat?parent=localhost&darkpopout=true`"
+        :src="`https://www.twitch.tv/embed/${login}/chat?parent=prueba-tecnica-cyan-omega.vercel.app&darkpopout=true`"
         height="341"
         width=" 869"
         class="stream-page__chat-box--chat"
