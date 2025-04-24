@@ -43,17 +43,14 @@
 
   &__cards {
     display: flex;
+    width: 100%;
+    height: auto;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 2.3125rem;
-    width: fit-content;
-    height: fit-content;
+    gap: 2rem;
   }
   &__category {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 76.25rem;
+    width: 100%;
     height: 20.2638rem;
   }
 }

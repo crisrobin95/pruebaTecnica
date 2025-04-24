@@ -27,7 +27,7 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
         />
         <article class="streams-items__details">
           <h1 class="streams-items__title">
-            {{ streamData[index].title.slice(0, 40) }}
+            {{ streamData[index].title.slice(0, 20) }}
           </h1>
           <p class="streams-items__name-channel">
             {{ users.display_name }}<SvgIconVerified />
@@ -59,10 +59,12 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
 <style lang="scss" scoped>
 .buttons {
   display: flex;
+  gap: 0.625rem;
 }
 .streams-items {
   display: inline-flex;
   flex-direction: column;
+  justify-content: space-between;
   width: fit-content;
 
   &__link {
@@ -79,7 +81,6 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
     display: flex;
     flex-direction: column;
     height: fit-content;
-    padding: 0.2rem;
   }
 
   &__stream-img {

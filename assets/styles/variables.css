@@ -11,7 +11,8 @@
   --c-icon-main: #199AFC;
  
 
-  --c-static-black: #000000;
+  --c-static-black: rgba (14, 14, 16, 1);
+  ;
   --c-static-white: #ffffff;
   --c-static-graphite: #1a1a1a;
   --c-static-grey-light: #f0f0f0;
