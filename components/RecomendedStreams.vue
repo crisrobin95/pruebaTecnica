@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useTwitchData } from '~/composables/useTwitch'
 
-const limit = 6
-const { userData, streamData, error, loading } = useTwitchData(limit)
+const limit = 8
+const { userData, streamData, channelData, error, loading } = useTwitchData(limit)
 
 const isPanelVisible = ref(true)
 
@@ -19,6 +19,7 @@ const formatViewers = (viewCount: number | undefined): string => {
   }
   return String(viewCount)
 }
+const props = defineProps<{ collapsed?: boolean }>()
 </script>
 
 <template>
@@ -31,7 +32,7 @@ const formatViewers = (viewCount: number | undefined): string => {
     </section>
 
     <section
-      v-if="!loading && userData && streamData"
+      v-if="!loading && userData && streamData && channelData"
       v-for="(user, index) in userData.slice(0, limit)"
       :key="user.id"
       class="recomended-streams__box"
@@ -39,11 +40,18 @@ const formatViewers = (viewCount: number | undefined): string => {
       <img
         :src="user.profile_image_url.replace('{width}x{height}', '1x1')"
         :alt="`Thumbnail of ${user.display_name}'s stream`"
+        :class="{ rotated: props.collapsed }"
         class="recomended-streams__img"
       />
-      <NuxtLink :to="`/${user.login}`" class="recomended-streams__link">
-        <p class="recomended-streams__name" v-if="isPanelVisible">
+      <NuxtLink :to="`/${user.login}`" class="recomended-streams__name">
+        <p class="recomended-streams__name--name-channel" v-if="isPanelVisible">
           {{ user.display_name.slice(0, 8) }}
+        </p>
+        <p
+          class="recomended-streams__name--info-chanel"
+          v-if="isPanelVisible && channelData[index]"
+        >
+          {{ channelData[index].game_name.slice(0, 10) }}
         </p>
       </NuxtLink>
       <section v-if="isPanelVisible" class="recomended-streams__point-viewers">
@@ -66,65 +74,99 @@ const formatViewers = (viewCount: number | undefined): string => {
 <style lang="scss" scoped>
 .mains {
   display: flex;
-  width: max-content;
-  gap: 0.5em;
+  width: 100%;
+  height: 36px;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-right: 5px;
+  padding-bottom: 10px;
+  padding-left: 5px;
 }
 .title {
-  display: flex;
   width: 100%;
+  height: 16px;
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 15.6px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-transform: uppercase;
 }
 
 .ocult {
+  width: 15.999000549316406px;
+  height: 12px;
   background-color: transparent;
 }
 
 .recomended-streams {
   display: flex;
   flex-direction: column;
-  background-color: #121212;
-  padding: 0.5em;
   width: fit-content;
-  height: fit-content;
-  border-radius: 0.5em;
-  margin-right: 1em;
-
   &__box {
     display: flex;
-    width: auto;
-    height: 2.5em;
+    width: fit-content;
+    height: 40px;
     justify-content: space-between;
-    padding-top: 0.3125rem;
-    padding-right: 0.625rem;
-    padding-bottom: 0.3125rem;
-    padding-left: 0.625rem;
+    gap: 0.5rem;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
   }
-  &__link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    @include font-medium;
-  }
+
   &__img {
     display: flex;
     align-items: center;
-    width: 1.8em;
-    height: 1.8em;
-    border-radius: 50%;
-    justify-content: flex-start;
+    width: 30px;
+    height: 30px;
+    max-width: 30px;
+    border-radius: 999999px;
+  }
+  &__name {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    &--name-channel {
+      width: 140px;
+      height: 15px;
+      font-family: Inter;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 16.8px;
+      letter-spacing: 0%;
+      vertical-align: middle;
+    }
+
+    &--info-chanel {
+      width: 140px;
+      height: 15px;
+      font-family: Inter;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 15.6px;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: rgba(173, 173, 184, 1);
+    }
   }
 
   &__viewrs {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    width: 40px;
+    height: 30px;
+    gap: 5px;
   }
   &__point-viewers {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 0.2em;
+
     &--count {
       display: flex;
-
+      align-items: flex-start;
       font-family: Inter;
       font-weight: 400;
       font-size: 0.81rem;

@@ -96,7 +96,7 @@ const { userData, streamData, startTime, error, loading } = useTwitchUser(props.
 .stream-info {
   display: flex;
   padding: 0.3em;
-  width: 51.625rem;
+  width: 51.625px;
 
   &__name {
     @include fontChannels;
@@ -153,9 +153,9 @@ const { userData, streamData, startTime, error, loading } = useTwitchUser(props.
 
   &__tags-box {
     display: flex;
-    width: 45.8125rem;
-    height: 2.5625rem;
-    gap: 0.3125rem;
+    width: 45.8125px;
+    height: 2.5625px;
+    gap: 0.3125px;
 
     &--tags {
       @include tag;
@@ -169,15 +169,15 @@ const { userData, streamData, startTime, error, loading } = useTwitchUser(props.
     margin-top: 2em;
 
     &--about {
-      width: 50.375rem;
-      height: 1.375rem;
+      width: 50.375px;
+      height: 1.375px;
       margin-bottom: 3em;
     }
     &--box {
       display: flex;
       flex-direction: column;
       gap: 1em;
-      width: 46.5781rem;
+      width: 46.5781px;
       background-color: rgba(24, 24, 27, 1);
       padding: 1em;
     }

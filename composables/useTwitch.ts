@@ -1,10 +1,11 @@
 import { ref, onMounted } from 'vue'
-import type { User, Streams, Games } from '~/types/typesPoryect'
+import type { User, Streams, Games, Channels } from '~/types/typesPoryect'
 import { twitchAPIClient } from '~/utils/twitchApi'
 
 export function useTwitchData(limit: number) {
   const userData = ref<User[]>([])
   const streamData = ref<Streams[]>([])
+  const channelData = ref<Channels[]>([])
   const error = ref<Error | null>(null)
   const loading = ref<boolean>(true)
 
@@ -20,6 +21,12 @@ export function useTwitchData(limit: number) {
       const query = logins.map((login: string) => `login=${login}`).join('&')
       const datos = await twitchAPIClient.fetch<any>(`users?${query}`)
       userData.value = datos.data
+      const userIds = userData.value.map((user) => user.id)
+      const channelsQuery = userIds.map((id) => `broadcaster_id=${id}`).join('&')
+      const channelsResponse = await twitchAPIClient.fetch<{ data: Channels[] }>(
+        `channels?${channelsQuery}`,
+      )
+      channelData.value = channelsResponse.data
       loading.value = false
     } catch (err: any) {
       error.value = err
@@ -30,6 +37,7 @@ export function useTwitchData(limit: number) {
   return {
     userData,
     streamData,
+    channelData,
     error,
     loading,
   }
@@ -77,6 +85,7 @@ export function useTwitchUser(login: string) {
       const usersData = await twitchAPIClient.fetch<any>(`users?login=${login}`)
       if (usersData.data.length > 0) {
         userData.value = usersData.data[0]
+
         const streamsData = await twitchAPIClient.fetch<any>(
           `streams?user_login=${login}`,
         )
@@ -102,8 +111,9 @@ export function useTwitchUser(login: string) {
   return {
     userData,
     streamData,
+
+    startTime,
     error,
     loading,
-    startTime,
   }
 }

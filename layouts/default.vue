@@ -1,37 +1,49 @@
 <script setup lang="ts"></script>
 
 <template>
-  <nav class="menu">
+  <header class="menu">
     <NavLeft />
     <NavCenter />
     <NavRigth />
-  </nav>
-  <section class="page">
-    <aside class="page__recomended">
+  </header>
+  <main class="main">
+    <aside class="main__recomended">
       <RecomendedStreams />
     </aside>
-    <slot></slot>
-  </section>
+    <section class="main__streams">
+      <slot></slot>
+    </section>
+  </main>
 </template>
 
 <style lang="scss" scoped>
 .menu {
   display: flex;
   background-color: var(--c-blackNavy);
-  height: 2em;
   width: 100%;
+  height: 50px;
   justify-content: space-between;
-  align-items: center;
-  padding: 1.3em;
+  padding-top: 5px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+  padding-left: 20px;
 }
 
-.page {
+.main {
   display: flex;
+  width: 100%;
+  height: 2197px;
+  gap: 10px;
   &__recomended {
     display: flex;
-    width: fit-content;
-    height: 24.94em;
-    padding: 0.5em;
+    height: 356px;
+    padding: 0.2rem;
+  }
+  &__streams {
+    display: flex;
+    width: 100%;
+    height: 2123px;
+    gap: 20px;
   }
 }
 </style>

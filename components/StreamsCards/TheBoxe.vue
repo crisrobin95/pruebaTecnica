@@ -13,7 +13,7 @@
 .type {
   display: flex;
   width: 100%;
-  height: 3.9375rem;
+  height: 3.9375px;
   justify-content: space-between;
   padding: 0.2em;
   margin-top: 1em;

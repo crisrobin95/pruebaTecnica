@@ -1,25 +1,22 @@
 * {
+  
   margin: 0;
   padding: 0;
   border: 0;
-  box-sizing: border-box;
-  vertical-align: baseline;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   font-family: Inter;
   color: var( --c-static-white);
-  
-
-
+  box-sizing: border-box;
 }
 
 body{
+  
+  max-width: 120rem;
+  margin: auto;
   background-color: var(--c-black);
 }
 
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 0.4375em;
   background-color: var( --c-black);
   @media (max-width: 53.625em) {
@@ -35,4 +32,4 @@ body{
   @media (max-width: 53.625em) {
     width: 0;
   }
-}
+} */

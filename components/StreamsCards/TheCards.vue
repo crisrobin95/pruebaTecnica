@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTwitchData } from '~/composables/useTwitch'
 
-const limit = 3
+const limit = 6
 const { userData, streamData, error, loading } = useTwitchData(limit)
 </script>
 
@@ -63,8 +63,10 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
 .streams-items {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  height: 19.9em;
+  justify-content: space-between;
+  width: fit-content;
+  height: 318.41998291015625px;
+  gap: 2.3125rem;
 
   &__link {
     text-decoration: none;
@@ -75,20 +77,22 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
   &__details {
     display: flex;
     flex-direction: column;
-    padding: 1em;
+    padding: 1px;
   }
 
   &__stream-img {
-    width: 23.8em;
-    height: 13.15em;
+    width: 382px;
+    height: 210.4199981689453px;
   }
   &__info {
     display: flex;
-    align-items: flex-start;
+    width: 382px;
+    height: 98px;
+    gap: 12px;
   }
   &__name-channel {
     color: rgba(173, 173, 184, 1);
-    @include font-small;
+    @include font-medium;
   }
 
   &__icon-channel {

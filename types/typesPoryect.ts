@@ -42,3 +42,17 @@ export type Category = {
   name: string
   box_art_url: string
 }
+
+export type Channels = {
+  broadcaster_id: string
+  broadcaster_login: string
+  broadcaster_name: string
+  broadcaster_language: string
+  game_id: string
+  game_name: String
+  title: String
+  delay: 0
+  tags: []
+  content_classification_labels: []
+  is_branded_content: boolean
+}

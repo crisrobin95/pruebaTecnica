@@ -11,10 +11,9 @@
 <style lang="scss" scoped>
 .division {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 2.5em;
-  margin-top: 1em;
+  width: 1220rem;
+  height: 40rem;
+
   &__bar {
     width: 33.59em;
     height: 0.06em;
@@ -29,12 +28,6 @@
     width: 10%;
     align-items: center;
     gap: 0.5em;
-  }
-}
-
-@media (max-width: 1800px) {
-  .division {
-    width: 100%;
   }
 }
 </style>

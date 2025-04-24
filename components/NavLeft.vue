@@ -12,7 +12,9 @@
 
 <style lang="scss" scoped>
 .link {
+  display: flex;
   text-decoration: none;
+  align-items: center;
 }
 .nav {
   display: flex;

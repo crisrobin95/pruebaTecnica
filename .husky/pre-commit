@@ -4,8 +4,8 @@
 # Ejecutar tests y typecheck, guardando salida en un archivo temporal
 TEMP_FILE=$(mktemp)
 
-npx vitest run && \
-npx nuxi typecheck 2>&1 | tee "$TEMP_FILE"
+nrem vitest run && \
+nrem nuxi typecheck 2>&1 | tee "$TEMP_FILE"
 
 # Buscar errores en el archivo temporal
 if grep -q "error" "$TEMP_FILE"; then
@@ -19,7 +19,7 @@ if grep -q "error" "$TEMP_FILE"; then
                                          
                                          
 \n"
-    printf "Please execute the next command to see the errors in more detail: 'npx nuxi typecheck'\n\n"
+    printf "Please execute the next command to see the errors in more detail: 'nrem nuxi typecheck'\n\n"
     printf "❌ Typecheck failed! Commit aborted. ❌\n\n"
     printf "\e[0m"
     rm "$TEMP_FILE"
@@ -28,4 +28,4 @@ fi
 
 # Limpiar el archivo temporal y continuar con lint-staged si no hubo errores
 rm "$TEMP_FILE"
-npx lint-staged
+nrem lint-staged

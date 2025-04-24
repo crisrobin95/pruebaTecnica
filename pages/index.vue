@@ -2,67 +2,49 @@
 
 <template>
   <div class="page">
-    <section class="page__streams">
+    <section class="page__title">
       <StreamsCardsTheTittle :title="'Live channels'" />
-      <article class="page__cards">
-        <StreamsCardsTheCards />
-      </article>
-      <div class="page__division">
-        <StreamsCardsTheDivider />
-      </div>
-      <section class="page__category">
-        <StreamsCardsTheTittle :title="'Category'" />
-        <StreamsCardsTheCategory />
-      </section>
-      <StreamsCardsTheBoxe />
     </section>
-    <StreamsCardsTheTittle :title="'Live channels'" />
     <article class="page__cards">
       <StreamsCardsTheCards />
     </article>
-    <div class="page__division">
+    <section class="page__division">
       <StreamsCardsTheDivider />
-    </div>
+    </section>
+    <!-- <section class="page__category">
+      <StreamsCardsTheTittle :title="'Category'" />
+      <StreamsCardsTheCategory />
+    </section>
+    <StreamsCardsTheBoxe /> -->
   </div>
 </template>
 
 <style lang="scss" scoped>
 .page {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  gap: 1.25em;
+  height: 2123px;
+  gap: 20px;
 
-  &__streams {
-    width: fit-content;
-    margin-top: 1em;
+  &__title {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    padding-top: 1em;
   }
 
   &__cards {
     display: flex;
-    align-self: start;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 37px;
     width: fit-content;
-    padding-right: 0.5em;
+    height: fit-content;
   }
   &__category {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-  }
-}
-@media (min-width: 1281px) {
-  .page {
-    width: 100%;
-  }
-
-  .page__cards {
-    width: 100%;
-  }
-  .page__streams {
-    width: 100%;
-  }
-  .page__category {
-    width: 100%;
-    justify-content: space-between;
   }
 }
 </style>
