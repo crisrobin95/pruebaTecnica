@@ -11,11 +11,13 @@
     <section class="page__division">
       <StreamsCardsTheDivider />
     </section>
-    <!-- <section class="page__category">
+    <section class="page__title">
       <StreamsCardsTheTittle :title="'Category'" />
+    </section>
+    <section class="page__category">
       <StreamsCardsTheCategory />
     </section>
-    <StreamsCardsTheBoxe /> -->
+    <!-- <StreamsCardsTheBoxe /> -->
   </div>
 </template>
 
@@ -24,27 +26,35 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 2123px;
-  gap: 20px;
+  height: 132.6875rem;
+  gap: 1.25rem;
 
   &__title {
     display: flex;
     width: 100%;
     height: fit-content;
-    padding-top: 1em;
+    padding-top: 1rem;
+  }
+  &____division {
+    display: flex;
+    width: 100%;
+    height: 2.5rem;
   }
 
   &__cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 37px;
+    justify-content: center;
+    gap: 2.3125rem;
     width: fit-content;
     height: fit-content;
   }
   &__category {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
+    width: 76.25rem;
+    height: 20.2638rem;
   }
 }
 </style>

@@ -3,9 +3,9 @@
   margin: 0;
   padding: 0;
   border: 0;
+  box-sizing: border-box;
   font-family: Inter;
   color: var( --c-static-white);
-  box-sizing: border-box;
 }
 
 body{

@@ -75,28 +75,28 @@ const props = defineProps<{ collapsed?: boolean }>()
 .mains {
   display: flex;
   width: 100%;
-  height: 36px;
+  height: 2.25rem;
   justify-content: space-between;
-  padding-top: 10px;
-  padding-right: 5px;
-  padding-bottom: 10px;
-  padding-left: 5px;
+  padding-top: 0.625rem;
+  padding-right: 0.3125rem;
+  padding-bottom: 0.625rem;
+  padding-left: 0.3125rem;
 }
 .title {
   width: 100%;
-  height: 16px;
+  height: 1rem;
   font-family: Inter;
   font-weight: 600;
-  font-size: 13px;
-  line-height: 15.6px;
+  font-size: 0.8125rem;
+  line-height: 0.975rem;
   letter-spacing: 0%;
   vertical-align: middle;
   text-transform: uppercase;
 }
 
 .ocult {
-  width: 15.999000549316406px;
-  height: 12px;
+  width: 0.9999rem;
+  height: 0.75rem;
   background-color: transparent;
 }
 
@@ -107,45 +107,45 @@ const props = defineProps<{ collapsed?: boolean }>()
   &__box {
     display: flex;
     width: fit-content;
-    height: 40px;
+    height: 2.5rem;
     justify-content: space-between;
     gap: 0.5rem;
-    padding-top: 5px;
-    padding-right: 10px;
-    padding-bottom: 5px;
-    padding-left: 10px;
+    padding-top: 0.3125rem;
+    padding-right: 0.625rem;
+    padding-bottom: 0.3125rem;
+    padding-left: 0.625rem;
   }
 
   &__img {
     display: flex;
     align-items: center;
-    width: 30px;
-    height: 30px;
-    max-width: 30px;
-    border-radius: 999999px;
+    width: 1.875rem;
+    height: 1.875rem;
+    max-width: 1.875rem;
+    border-radius: 62499.9375rem;
   }
   &__name {
     display: flex;
     flex-direction: column;
     text-decoration: none;
     &--name-channel {
-      width: 140px;
-      height: 15px;
+      width: 8.75rem;
+      height: 0.9375rem;
       font-family: Inter;
       font-weight: 600;
-      font-size: 14px;
-      line-height: 16.8px;
+      font-size: 0.875rem;
+      line-height: 1.05rem;
       letter-spacing: 0%;
       vertical-align: middle;
     }
 
     &--info-chanel {
-      width: 140px;
-      height: 15px;
+      width: 8.75rem;
+      height: 0.9375rem;
       font-family: Inter;
       font-weight: 400;
-      font-size: 13px;
-      line-height: 15.6px;
+      font-size: 0.8125rem;
+      line-height: 0.975rem;
       letter-spacing: 0%;
       vertical-align: middle;
       color: rgba(173, 173, 184, 1);
@@ -155,9 +155,9 @@ const props = defineProps<{ collapsed?: boolean }>()
   &__viewrs {
     display: flex;
     justify-content: flex-start;
-    width: 40px;
-    height: 30px;
-    gap: 5px;
+    width: 2.5rem;
+    height: 1.875rem;
+    gap: 0.3125rem;
   }
   &__point-viewers {
     display: flex;

@@ -11,23 +11,39 @@
 <style lang="scss" scoped>
 .division {
   display: flex;
-  width: 1220rem;
-  height: 40rem;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 2.5rem;
+  gap: 0.625rem;
 
   &__bar {
-    width: 33.59em;
-    height: 0.06em;
-    top: 1.56em;
-    border-top-width: 0.06em;
+    display: flex;
+    width: 100%;
+    height: 0.0625rem;
+    top: 1.5625rem;
+    border-top-width: 0.0625rem;
     background-color: #2f2f36;
   }
   &__more {
     display: flex;
-    background-color: transparent;
-    height: auto;
-    width: 10%;
+    justify-content: space-between;
+    width: 25%;
     align-items: center;
-    gap: 0.5em;
+    height: 1.25rem;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+    gap: 0.3125rem;
+    top: 0.9375rem;
+    left: 34.3631rem;
+    background: transparent;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 1.2188rem;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
   }
 }
 </style>

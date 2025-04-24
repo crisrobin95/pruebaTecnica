@@ -23,14 +23,15 @@ const { topCategories, error, loading } = useTwitchTopCategories(limit)
 <style lang="scss" scoped>
 .category-cards {
   display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
-  gap: 0.3em;
-  padding: 0.5em;
+  width: 76.25rem;
+  height: 22.2638rem;
+  gap: 0.625rem;
+
   &__port {
-    width: 11.35em;
-    height: 15.1em;
+    width: 11.3542rem;
+    height: 15.1388rem;
   }
 }
 </style>

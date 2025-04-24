@@ -61,15 +61,16 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
   display: flex;
 }
 .streams-items {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
-  justify-content: space-between;
   width: fit-content;
-  height: 318.41998291015625px;
-  gap: 2.3125rem;
 
   &__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     text-decoration: none;
+    gap: 0.625rem;
   }
   &__title {
     @include font-medium;
@@ -77,18 +78,19 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
   &__details {
     display: flex;
     flex-direction: column;
-    padding: 1px;
+    height: fit-content;
+    padding: 0.2rem;
   }
 
   &__stream-img {
-    width: 382px;
-    height: 210.4199981689453px;
+    width: 23.875rem;
+    height: 13.1512rem;
   }
   &__info {
     display: flex;
-    width: 382px;
-    height: 98px;
-    gap: 12px;
+    width: 23.875rem;
+    height: fit-content;
+    gap: 0.75rem;
   }
   &__name-channel {
     color: rgba(173, 173, 184, 1);
