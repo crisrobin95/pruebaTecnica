@@ -4,8 +4,8 @@
 # Ejecutar tests y typecheck, guardando salida en un archivo temporal
 TEMP_FILE=$(mktemp)
 
-nrem vitest run && \
-nrem nuxi typecheck 2>&1 | tee "$TEMP_FILE"
+npx vitest run && \
+npx nuxi typecheck 2>&1 | tee "$TEMP_FILE"
 
 # Buscar errores en el archivo temporal
 if grep -q "error" "$TEMP_FILE"; then
@@ -28,4 +28,4 @@ fi
 
 # Limpiar el archivo temporal y continuar con lint-staged si no hubo errores
 rm "$TEMP_FILE"
-nrem lint-staged
+npx lint-staged
