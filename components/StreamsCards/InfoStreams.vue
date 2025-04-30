@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useTwitchUser } from '~/composables/useTwitch'
-
 const props = defineProps<{
   login: string
 }>()
@@ -39,148 +37,114 @@ const { userData, streamData, startTime, error, loading } = useTwitchUser(props.
 </script>
 
 <template>
-  <div class="stream-info">
-    <div v-if="loading">Cargando información...</div>
-    <div v-if="error">Error al cargar la información: {{ error.message }}</div>
-    <aside class="stream-info__box-img" v-if="userData">
+  <div v-if="loading">Cargando información...</div>
+  <div v-if="error">Error al cargar la información: {{ error.message }}</div>
+  <main class="stream-info">
+    <aside>
       <img
-        :src="userData.profile_image_url?.replace('{width}x{height}', '70x70')"
+        v-if="userData"
+        :src="userData.profile_image_url?.replace('{width}x{height}', '40x40')"
         :alt="userData.display_name"
-        class="stream-info__avatar"
+        class="stream-info__img"
       />
     </aside>
-    <section class="stream-info__box-info" v-if="userData">
-      <div class="stream-info__first-line">
-        <h3 class="stream-info__name">{{ userData.display_name }}</h3>
-        <aside class="stream-info__buttons">
-          <SvgIconFollow />
-          <SvgIconSub />
-        </aside>
-      </div>
-      <div class="stream-info__status-viewes" v-if="streamData">
-        <span class="stream-info__status">{{ streamData.title }}</span>
-        <span class="stream-info__viewers"
-          ><SvgIconRed />{{ streamData.viewer_count }}</span
-        >
-        <span class="stream-info__time">{{ liveTime }}</span>
-        <span><SvgIconShare /></span>
-      </div>
-      <section class="stream-info__game-name">{{ streamData?.game_name }}</section>
-      <div class="stream-info__tags-box">
-        <span
-          v-for="tag in streamData?.tags"
-          :key="tag"
-          class="stream-info__tags-box--tags"
-        >
-          {{ tag }}</span
-        >
-      </div>
-      <section class="stream-info__footer">
-        <article class="stream-info__footer--about">
-          About {{ userData.display_name }}
+    <section class="stream-info__header">
+      <header class="stream-info__contents" v-if="userData">
+        <span class="stream-info__name-user">{{ userData.display_name }}</span>
+        <span class="stream-info__buttons"> <SvgIconFollow /> <SvgIconSub /></span>
+      </header>
+      <section class="stream-info__first-line" v-if="streamData">
+        <span class="stream-info__title">{{ streamData.title }}</span>
+        <article class="stream-info__time-viewer">
+          <span class="stream-info__viewers"
+            ><SvgIconRed />{{ streamData.viewer_count }}</span
+          >
+          <span class="stream-info__time">{{ liveTime }}</span>
+          <span><SvgIconShare /></span>
         </article>
-        <section class="stream-info__footer--box" v-if="userData">
-          <p class="stream-info__footer--follows" v-if="userData">
-            {{ userData.view_count }}Follow
-          </p>
-          <p class="stream-info__footer--description" v-if="userData">
-            {{ userData.description }}
-          </p>
-        </section>
+        <span class="stream-info__game-name">{{ streamData.game_name }}</span>
       </section>
     </section>
-  </div>
+  </main>
 </template>
 
 <style lang="scss" scoped>
 .stream-info {
   display: flex;
-  padding: 0.3em;
-  width: 51.625px;
+  width: 100%;
+  height: fit-content;
+  padding-right: 0.625rem;
+  gap: 1rem;
 
-  &__name {
-    @include fontChannels;
-    color: white;
+  &__header {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+    gap: 0.625rem;
   }
-  &__box-info {
-    display: flex;
-    flex-direction: column;
-    padding: 0.5em;
-  }
-
-  &__first-line {
+  &__contents {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    width: auto;
-    height: auto;
   }
-  &__avatar {
-    width: 4em;
-    height: 4em;
-    border-radius: 50%;
+  &__img {
+    width: 4.0625rem;
+    height: 4.0625rem;
+    border-radius: 62499.9375rem;
   }
-  &__box-info {
-    width: 100%;
-  }
-  &__status-viewes {
+  &__name-user {
     display: flex;
-    align-items: center;
-    gap: 0.2em;
+    flex-wrap: wrap;
+    font-family: Roobert;
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 1.35rem;
+    letter-spacing: 0%;
+    vertical-align: middle;
   }
-  &__status {
+  &__time-viewer {
     display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+    justify-content: flex-end;
+    gap: 0.625rem;
     align-items: center;
+  }
+  &__first-line {
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
-    height: 2.1em;
+    height: fit-content;
+  }
+  &__title {
+    width: 60%;
     @include font-medium;
+  }
+  &__time {
+    font-family: Helvetica;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    line-height: 1.2188rem;
+    letter-spacing: 0%;
+    vertical-align: middle;
   }
   &__viewers {
-    display: flex;
+    @include font-small;
     color: rgba(255, 130, 128, 1);
-    @include font-medium;
   }
 
-  &__time {
-    @include font-small;
-    font-family: Helvetica Neue;
-  }
   &__game-name {
+    width: fit-content;
+    @include font-small;
     color: rgba(25, 154, 252, 1);
     text-decoration: underline;
-    @include font-small;
   }
-
-  &__tags-box {
+  &__tags {
     display: flex;
-    width: 45.8125px;
-    height: 2.5625px;
-    gap: 0.3125px;
-
-    &--tags {
-      @include tag;
-      @include font-medium;
-      height: fit-content;
-    }
-  }
-  &__footer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 2em;
-
-    &--about {
-      width: 50.375px;
-      height: 1.375px;
-      margin-bottom: 3em;
-    }
-    &--box {
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-      width: 46.5781px;
-      background-color: rgba(24, 24, 27, 1);
-      padding: 1em;
-    }
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    gap: 0.3125rem;
+    @include tag;
   }
 }
 </style>

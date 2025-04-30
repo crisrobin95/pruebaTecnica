@@ -13,10 +13,11 @@
 .type {
   display: flex;
   width: 100%;
-  height: 3.9375px;
+  height: fit-content;
   justify-content: space-between;
-  padding: 0.2em;
-  margin-top: 1em;
+  flex-wrap: wrap;
+  padding-bottom: 0.625rem;
+  gap: 0.625rem;
 
   &__game {
     @include styleBoxes;

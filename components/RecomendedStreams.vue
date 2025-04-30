@@ -85,13 +85,7 @@ const props = defineProps<{ collapsed?: boolean }>()
 .title {
   width: 100%;
   height: 1rem;
-  font-family: Inter;
-  font-weight: 600;
-  font-size: 0.8125rem;
-  line-height: 0.975rem;
-  letter-spacing: 0%;
-  vertical-align: middle;
-  text-transform: uppercase;
+  @include font-medium;
 }
 
 .ocult {

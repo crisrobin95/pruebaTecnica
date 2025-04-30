@@ -32,20 +32,24 @@
 .main {
   display: flex;
   width: 100%;
-  height: 137.3125rem;
-  padding-right: 1.25rem;
-  padding-left: 1.25rem;
-  gap: 0.625rem;
+  height: fit-content;
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+  gap: 0.1875rem;
+  padding: 0.625rem 0.625rem 1rem 0.625rem;
 
   &__recomended {
     display: flex;
-    height: 22.25rem;
+    flex-wrap: wrap;
+    width: fit-content;
+    height: auto;
     padding: 0.2rem;
   }
   &__streams {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
-    height: 132.6875rem;
+    height: fit-content;
     gap: 1.25rem;
   }
 }

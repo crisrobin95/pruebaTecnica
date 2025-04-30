@@ -17,7 +17,27 @@
     <section class="page__category">
       <StreamsCardsTheCategory />
     </section>
-    <!-- <StreamsCardsTheBoxe /> -->
+    <section class="page__box-types">
+      <StreamsCardsTheBoxe />
+    </section>
+    <section class="page__title">
+      <StreamsCardsTheTittle :title="'Live channels'" />
+    </section>
+    <article class="page__cards">
+      <StreamsCardsTheCards />
+    </article>
+    <section class="page__division">
+      <StreamsCardsTheDivider />
+    </section>
+    <section class="page__title">
+      <StreamsCardsTheTittle :title="'Live channels'" />
+    </section>
+    <article class="page__cards">
+      <StreamsCardsTheCards />
+    </article>
+    <section class="page__division">
+      <StreamsCardsTheDivider />
+    </section>
   </div>
 </template>
 
@@ -43,15 +63,26 @@
 
   &__cards {
     display: flex;
-    width: 100%;
-    height: auto;
+    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 2rem;
+    width: 100%;
+    height: fit-content;
+    gap: 0.625rem;
   }
   &__category {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
-    height: 20.2638rem;
+    height: fit-content;
+  }
+
+  &__box-types {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    align-content: center;
+    flex-wrap: wrap;
   }
 }
 </style>

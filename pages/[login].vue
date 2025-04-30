@@ -5,68 +5,73 @@ const login = route.params.login as string
 
 <template>
   <div class="stream-page">
-    <section class="stream-page__stream-box">
+    <main class="stream-page__live">
       <iframe
         v-if="login"
         :src="`https://player.twitch.tv/?channel=${login}&parent=localhost`"
-        height="826"
-        width="474"
         frameborder="0"
         scrolling="no"
         allowfullscreen="true"
-        class="stream-page__stream-box--stream"
+        class="stream-page__live-player"
       >
       </iframe>
-      <section class="stream-page__stream-box--info">
+      <article class="stream-page__live-info">
         <StreamsCardsInfoStreams :login="login" />
-      </section>
-    </section>
-    <section class="stream-page__chat-box">
+      </article>
+      <section><StreamsCardsChannelInfo :login="login" /></section>
+    </main>
+    <aside class="stream-page__chat">
       <iframe
         :src="`https://www.twitch.tv/embed/${login}/chat?parent=localhost&darkpopout=true`"
-        height="341"
-        width=" 869"
-        class="stream-page__chat-box--chat"
+        class="stream-page__chat-box"
       >
       </iframe>
-    </section>
+    </aside>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .stream-page {
   display: flex;
-  justify-content: space-between;
-  width: 51.6em;
-  height: 54.3em;
-  gap: 1.25em;
-  margin-top: 1em;
-
-  &__stream-box {
+  flex-wrap: wrap;
+  width: 100%;
+  height: fit-content;
+  gap: 1.25rem;
+  &__live {
     display: flex;
     flex-direction: column;
-    width: 51.65em;
-    height: 54.31em;
-    gap: 1.25em;
-
-    &--stream {
-      background: rgba(25, 154, 252, 0.23);
-      width: 51.6em;
-      height: 29.6em;
-    }
+    width: 70%;
+    height: fit-content;
+    gap: 1.25rem;
+  }
+  &__live-player {
+    width: 100%;
+    height: 29.625rem;
+  }
+  &__live-info {
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+    gap: 1.25rem;
+  }
+  &__chat {
+    width: fit-content;
+    height: fit-content;
   }
   &__chat-box {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-    align-items: center;
+    width: 21.3125rem;
+    height: 54.3125rem;
+  }
 
-    &--chat {
-      width: 26em;
-      height: 40em;
-      padding-right: 0.56em;
-      padding-left: 0.56em;
-      gap: 0.62px;
+  @media (max-width: 900px) {
+    .stream-page {
+      &__live-player {
+        align-items: center;
+        max-width: 100%;
+        height: 28rem;
+      }
     }
   }
 }

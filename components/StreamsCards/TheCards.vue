@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTwitchData } from '~/composables/useTwitch'
 
-const limit = 6
+const limit = 3
 const { userData, streamData, error, loading } = useTwitchData(limit)
 </script>
 

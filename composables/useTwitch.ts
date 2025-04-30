@@ -43,7 +43,7 @@ export function useTwitchData(limit: number) {
   }
 }
 
-export function useTwitchTopCategories(limit: number = 4) {
+export function useTwitchTopCategories(limit: number) {
   const topCategories = ref<Games[]>([])
   const error = ref<Error | null>(null)
   const loading = ref<boolean>(true)
