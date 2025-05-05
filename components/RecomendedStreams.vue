@@ -118,6 +118,9 @@ onUnmounted(() => {
   width: 0.9999rem;
   height: 0.75rem;
   background-color: transparent;
+  &:hover {
+    background-color: var(--c-red);
+  }
 }
 
 .recomended-streams {

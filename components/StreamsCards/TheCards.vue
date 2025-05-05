@@ -65,6 +65,9 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
   flex-direction: column;
   justify-content: space-between;
   width: fit-content;
+  &:hover {
+    background-color: var(--c-red);
+  }
 
   &__link {
     display: flex;
@@ -72,6 +75,7 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
     justify-content: space-around;
     text-decoration: none;
     gap: 0.625rem;
+    cursor: pointer;
   }
   &__title {
     @include font-medium;

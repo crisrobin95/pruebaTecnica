@@ -93,5 +93,12 @@
       }
     }
   }
+  @media (max-width: 200rem) {
+    .page {
+      &__cards {
+        justify-content: space-evenly;
+      }
+    }
+  }
 }
 </style>

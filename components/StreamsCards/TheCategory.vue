@@ -28,6 +28,13 @@ const { topCategories, error, loading } = useTwitchTopCategories(limit)
   width: 11.3544rem;
   height: fit-content;
   gap: 0.625rem;
+  transition: border 0.3s ease-in-out;
+  border: 0.125rem solid transparent;
+
+  &:hover {
+    border: 0.125rem solid var(--c-icon-main);
+  }
+
   &__port {
     display: flex;
     width: 11.3542rem;
