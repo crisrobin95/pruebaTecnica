@@ -1,28 +1,49 @@
 <script setup lang="ts"></script>
 <template>
-  <div class="search">
-    <input type="text" class="search__text" placeholder="Buscar canal o juego" />
-    <button class="search__button">
-      <SvgIconSearch class="search__button--icon" />
+  <div class="search-bar">
+    <input type="text" class="search-bar__text" placeholder="Buscar canal o juego" />
+    <button class="search-bar__button">
+      <SvgIconSearch class="search-bar__button-icon" />
     </button>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.search {
+.search-bar {
   display: flex;
+  align-items: center;
 
   &__text {
+    display: flex;
     border: solid 0.2em #67676b;
-    padding: 0.5em;
     background-color: var(--c-blackNavy);
-    margin-left: 1em;
+    width: 100%;
+    height: 2.5rem;
+    border-top-left-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+    padding: 1rem;
   }
 
   &__button {
+    display: flex;
     background-color: #2f2f35;
-    border-radius: 0.2em;
-    cursor: pointer;
+    width: 2.125rem;
+    height: 2.5rem;
+    padding-right: 0.3125rem;
+    padding-left: 0.3125rem;
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+    align-items: center;
+  }
+  &__button-icon {
+    display: flex;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  @media (max-width: 420px) {
+    .search-bar {
+      display: none;
+    }
   }
 }
 </style>

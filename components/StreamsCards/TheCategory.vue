@@ -11,13 +11,11 @@ const { topCategories, error, loading } = useTwitchTopCategories(limit)
       :src="category.box_art_url.replace('{width}x{height}', '285x380')"
       alt="category port"
     />
-    <!-- <section
-      class="category-cards__info"
-      v-for="category in topCategories"
-      :key="category.id"
-    >
-      <p>{{ category.name }}</p>
-    </section> -->
+    <header class="category-cards__info">
+      {{ category.name }}
+    </header>
+    <section class="category-cards__viewers">{{ category.viewer_count }} viewer</section>
+
     <div v-if="error">{{ error }}</div>
   </section>
 </template>
@@ -25,8 +23,8 @@ const { topCategories, error, loading } = useTwitchTopCategories(limit)
 <style lang="scss" scoped>
 .category-cards {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-evenly;
   width: 11.3544rem;
   height: fit-content;
   gap: 0.625rem;
@@ -34,6 +32,28 @@ const { topCategories, error, loading } = useTwitchTopCategories(limit)
     display: flex;
     width: 11.3542rem;
     height: 15.1388rem;
+  }
+  &__info {
+    display: flex;
+    justify-content: left;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1.3125rem;
+    letter-spacing: 0%;
+  }
+  &__viewers {
+    display: flex;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 19.5px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: rgba(173, 173, 184, 1);
+  }
+  &__tag {
+    @include tag;
   }
 }
 </style>

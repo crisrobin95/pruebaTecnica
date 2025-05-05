@@ -44,7 +44,15 @@ export function useTwitchData(limit: number) {
 }
 
 export function useTwitchTopCategories(limit: number) {
-  const topCategories = ref<Games[]>([])
+  const topCategories = ref<
+    {
+      id: string
+      name: string
+      box_art_url: string
+      viewer_count: number | null
+      tags: string[] | null
+    }[]
+  >([])
   const error = ref<Error | null>(null)
   const loading = ref<boolean>(true)
 
@@ -52,11 +60,28 @@ export function useTwitchTopCategories(limit: number) {
     loading.value = true
     try {
       const categoriesData = await twitchAPIClient.fetch<any>(`games/top?first=${limit}`)
-      topCategories.value = categoriesData.data.map((game: any) => ({
-        id: game.id,
-        name: game.name,
-        box_art_url: game.box_art_url,
-      }))
+      const games = categoriesData.data
+
+      const categoriesWithStreamInfo = await Promise.all(
+        games.map(async (game: any) => {
+          const streamsData = await twitchAPIClient.fetch<any>(
+            `streams?game_id=${game.id}&first=1`,
+          )
+          return {
+            id: game.id,
+            name: game.name,
+            box_art_url: game.box_art_url.replace('{width}x{height}', '100x140'),
+            viewer_count: streamsData.data[0]?.viewer_count || 0,
+            tags: streamsData.data[0]?.tags || null,
+          }
+        }),
+      )
+
+      categoriesWithStreamInfo.sort(
+        (a, b) => (b.viewer_count || 0) - (a.viewer_count || 0),
+      )
+
+      topCategories.value = categoriesWithStreamInfo
       loading.value = false
     } catch (err: any) {
       error.value = err
@@ -89,6 +114,7 @@ export function useTwitchUser(login: string) {
         const streamsData = await twitchAPIClient.fetch<any>(
           `streams?user_login=${login}`,
         )
+
         if (streamsData.data.length > 0) {
           streamData.value = streamsData.data[0]
           startTime.value = new Date(streamsData.data[0].started_at)
@@ -111,9 +137,21 @@ export function useTwitchUser(login: string) {
   return {
     userData,
     streamData,
-
     startTime,
     error,
     loading,
   }
 }
+
+// export function useTwitchChannelsTotal(userid: string) {
+//   const channelData = ref<ChannelsTotal>()
+//   onMounted(async () => {
+//     channelData.value = await twitchAPIClient.fetch<any>(
+//       `channels/followers?broadcaster_id=${userid}`,
+//     )
+//     console.log(channelData.value)
+//   })
+//   const totalFollowers = (channelData.value as ChannelsTotal).total
+
+//   return totalFollowers
+// }

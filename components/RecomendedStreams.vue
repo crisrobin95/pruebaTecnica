@@ -4,10 +4,13 @@ import { useTwitchData } from '~/composables/useTwitch'
 const limit = 8
 const { userData, streamData, channelData, error, loading } = useTwitchData(limit)
 
+const rotationAngle = ref(0)
+
 const isPanelVisible = ref(true)
 
 const togglePanelVisibility = () => {
   isPanelVisible.value = !isPanelVisible.value
+  rotationAngle.value = isPanelVisible.value ? 0 : 180
 }
 const formatViewers = (viewCount: number | undefined): string => {
   if (viewCount === undefined) {
@@ -20,6 +23,26 @@ const formatViewers = (viewCount: number | undefined): string => {
   return String(viewCount)
 }
 const props = defineProps<{ collapsed?: boolean }>()
+const handleResize = () => {
+  isPanelVisible.value = window.innerWidth > 750
+  rotationAngle.value = isPanelVisible.value ? 0 : 180
+}
+
+onBeforeMount(() => {
+  if (typeof window !== 'undefined') {
+    isPanelVisible.value = window.innerWidth > 750
+  }
+})
+
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    window.addEventListener('resize', handleResize)
+  }
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <template>
@@ -27,13 +50,16 @@ const props = defineProps<{ collapsed?: boolean }>()
     <section class="mains">
       <p class="title" v-if="isPanelVisible">Recommended Channels</p>
       <button class="ocult" @click="togglePanelVisibility">
-        <SvgIconOcult class="recomended-streams__ocult--button"></SvgIconOcult>
+        <SvgIconOcult
+          class="recomended-streams__ocult--button"
+          :style="{ transform: `rotate(${rotationAngle}deg)` }"
+        ></SvgIconOcult>
       </button>
     </section>
 
     <section
       v-if="!loading && userData && streamData && channelData"
-      v-for="(user, index) in userData.slice(0, limit)"
+      v-for="(user, index) in userData?.slice(0, limit)"
       :key="user.id"
       class="recomended-streams__box"
     >
@@ -44,20 +70,20 @@ const props = defineProps<{ collapsed?: boolean }>()
         class="recomended-streams__img"
       />
       <NuxtLink :to="`/${user.login}`" class="recomended-streams__name">
-        <p class="recomended-streams__name--name-channel" v-if="isPanelVisible">
+        <p class="recomended-streams__name-channel" v-if="isPanelVisible">
           {{ user.display_name.slice(0, 8) }}
         </p>
         <p
-          class="recomended-streams__name--info-chanel"
-          v-if="isPanelVisible && channelData[index]"
+          class="recomended-streams__info-chanel"
+          v-if="isPanelVisible && userData && streamData && streamData[index]"
         >
-          {{ channelData[index].game_name.slice(0, 10) }}
+          {{ streamData.find((stream) => stream.user_id === user.id)?.game_name }}
         </p>
       </NuxtLink>
       <section v-if="isPanelVisible" class="recomended-streams__point-viewers">
         <SvgIconOnline class="recomended-streams__point-viewers--point-red" />
         <p
-          class="recomended-streams__point-viewers--count"
+          class="recomended-streams__count"
           v-if="streamData[index] && streamData[index].viewer_count"
         >
           {{ formatViewers(streamData[index].viewer_count) }}
@@ -98,6 +124,13 @@ const props = defineProps<{ collapsed?: boolean }>()
   display: flex;
   flex-direction: column;
   width: fit-content;
+  transition: width 0.3s ease-in-out;
+  &.collapsed {
+    width: auto;
+    .mains .title {
+      display: none;
+    }
+  }
   &__box {
     display: flex;
     width: fit-content;
@@ -118,32 +151,31 @@ const props = defineProps<{ collapsed?: boolean }>()
     max-width: 1.875rem;
     border-radius: 62499.9375rem;
   }
+  &__name-channel {
+    width: 8.75rem;
+    height: 0.9375rem;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.05rem;
+    letter-spacing: 0%;
+    vertical-align: middle;
+  }
   &__name {
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    &--name-channel {
-      width: 8.75rem;
-      height: 0.9375rem;
-      font-family: Inter;
-      font-weight: 600;
-      font-size: 0.875rem;
-      line-height: 1.05rem;
-      letter-spacing: 0%;
-      vertical-align: middle;
-    }
-
-    &--info-chanel {
-      width: 8.75rem;
-      height: 0.9375rem;
-      font-family: Inter;
-      font-weight: 400;
-      font-size: 0.8125rem;
-      line-height: 0.975rem;
-      letter-spacing: 0%;
-      vertical-align: middle;
-      color: rgba(173, 173, 184, 1);
-    }
+  }
+  &__info-chanel {
+    width: 8.75rem;
+    height: 0.9375rem;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    line-height: 0.975rem;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: rgba(173, 173, 184, 1);
   }
 
   &__viewrs {
@@ -157,17 +189,20 @@ const props = defineProps<{ collapsed?: boolean }>()
     display: flex;
     justify-content: flex-end;
     align-items: center;
-
-    &--count {
-      display: flex;
-      align-items: flex-start;
-      font-family: Inter;
-      font-weight: 400;
-      font-size: 0.81rem;
-      line-height: 1.21em;
-      letter-spacing: 0%;
-      vertical-align: middle;
-    }
+  }
+  &__count {
+    display: flex;
+    align-items: flex-start;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 0.81rem;
+    line-height: 1.21em;
+    letter-spacing: 0%;
+    vertical-align: middle;
+  }
+  &__ocult--button {
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(0deg);
   }
 }
 </style>

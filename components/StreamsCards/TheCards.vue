@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useTwitchData } from '~/composables/useTwitch'
-
 const limit = 3
 const { userData, streamData, error, loading } = useTwitchData(limit)
 </script>
@@ -81,6 +80,7 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
     display: flex;
     flex-direction: column;
     height: fit-content;
+    gap: 0.3125rem;
   }
 
   &__stream-img {
@@ -89,13 +89,13 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
   }
   &__info {
     display: flex;
-    width: 23.875rem;
+    width: fit-content;
     height: fit-content;
     gap: 0.75rem;
   }
   &__name-channel {
     color: rgba(173, 173, 184, 1);
-    @include font-medium;
+    @include font-small;
   }
 
   &__icon-channel {
@@ -103,8 +103,29 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
     width: 2.68em;
     border-radius: 50%;
   }
+  &__category {
+    color: rgba(173, 173, 184, 1);
+    @include font-small;
+  }
   &__tags {
     @include tag;
+  }
+
+  @media (max-width: 26.875rem) {
+    .streams-items {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      &__stream-img {
+        width: 15rem;
+        height: 10rem;
+      }
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 }
 </style>

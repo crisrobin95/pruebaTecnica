@@ -8,7 +8,7 @@ const login = route.params.login as string
     <main class="stream-page__live">
       <iframe
         v-if="login"
-        :src="`https://player.twitch.tv/?channel=${login}&parent=prueba-tecnica-cyan-omega.vercel.app`"
+        :src="`https://player.twitch.tv/?channel=${login}&parent=localhost`"
         frameborder="0"
         scrolling="no"
         allowfullscreen="true"
@@ -22,7 +22,7 @@ const login = route.params.login as string
     </main>
     <aside class="stream-page__chat">
       <iframe
-        :src="`https://www.twitch.tv/embed/${login}/chat?parent=prueba-tecnica-cyan-omega.vercel.app&darkpopout=true`"
+        :src="`https://www.twitch.tv/embed/${login}/chat?parent=localhost&darkpopout=true`"
         class="stream-page__chat-box"
       >
       </iframe>
@@ -33,8 +33,8 @@ const login = route.params.login as string
 <style lang="scss" scoped>
 .stream-page {
   display: flex;
-  flex-wrap: wrap;
   width: 100%;
+  flex-wrap: wrap;
   height: fit-content;
   gap: 1.25rem;
   &__live {
@@ -57,20 +57,39 @@ const login = route.params.login as string
     gap: 1.25rem;
   }
   &__chat {
-    width: fit-content;
-    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    width: 25%;
+    min-height: 25rem;
   }
   &__chat-box {
-    width: 21.3125rem;
-    height: 54.3125rem;
+    display: flex;
+    width: 100%;
+    height: 100%;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 720px) {
     .stream-page {
+      display: flex;
+      flex-wrap: wrap;
       &__live-player {
         align-items: center;
         max-width: 100%;
         height: 28rem;
+      }
+      &__live {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: fit-content;
+        gap: 1.25rem;
+      }
+      &__chat {
+        width: 100%;
+      }
+      &__live-info {
+        flex-wrap: wrap;
+        width: 100%;
       }
     }
   }

@@ -64,6 +64,15 @@ const { userData, streamData, startTime, error, loading } = useTwitchUser(props.
         </article>
         <span class="stream-info__game-name">{{ streamData.game_name }}</span>
       </section>
+      <section class="stream-info__tags-box">
+        <button
+          class="stream-info__tag"
+          v-for="tag in streamData?.tags.slice(0, 3)"
+          :key="tag"
+        >
+          <span>{{ tag }}</span>
+        </button>
+      </section>
     </section>
   </main>
 </template>
@@ -102,6 +111,10 @@ const { userData, streamData, startTime, error, loading } = useTwitchUser(props.
     letter-spacing: 0%;
     vertical-align: middle;
   }
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+  }
   &__time-viewer {
     display: flex;
     flex-wrap: wrap;
@@ -132,19 +145,30 @@ const { userData, streamData, startTime, error, loading } = useTwitchUser(props.
     @include font-small;
     color: rgba(255, 130, 128, 1);
   }
-
+  &__tags-box {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 0.3125rem;
+  }
   &__game-name {
     width: fit-content;
     @include font-small;
     color: rgba(25, 154, 252, 1);
     text-decoration: underline;
   }
-  &__tags {
+  &__tag {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 1rem;
     gap: 0.3125rem;
     @include tag;
+  }
+  @media (max-width: 720px) {
+    .stream-info {
+      &__buttons {
+        display: none;
+      }
+    }
   }
 }
 </style>

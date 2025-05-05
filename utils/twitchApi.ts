@@ -18,10 +18,9 @@ export class TwitchAPI {
           },
         },
       )
-      console.log('Salida de ', res)
+
       return res.access_token
     } catch (error) {
-      console.error('Error getting Twitch token:', error)
       throw error
     }
   }
@@ -31,9 +30,6 @@ export class TwitchAPI {
       const token = await this.getToken()
       const url = `https://api.twitch.tv/helix/${endpoint}`
 
-      console.log('Parameters:', params)
-      console.log('URL:', url)
-
       const res = await $fetch<T>(url, {
         params,
         headers: {
@@ -41,8 +37,6 @@ export class TwitchAPI {
           Authorization: `Bearer ${token}`,
         },
       })
-
-      console.log('API Response:', res)
 
       return res
     } catch (error) {

@@ -56,3 +56,9 @@ export type Channels = {
   content_classification_labels: []
   is_branded_content: boolean
 }
+
+export type ChannelsTotal = {
+  total: number
+  data: []
+  pagination: object
+}

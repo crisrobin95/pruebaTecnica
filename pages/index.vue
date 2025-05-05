@@ -1,4 +1,4 @@
-<script setup></script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="page">
@@ -79,10 +79,19 @@
 
   &__box-types {
     display: flex;
+    justify-content: space-between;
     width: 100%;
     height: fit-content;
     align-content: center;
     flex-wrap: wrap;
+  }
+  @media (max-width: 90rem) {
+    .page {
+      &__cards {
+        display: flex;
+        justify-content: start;
+      }
+    }
   }
 }
 </style>

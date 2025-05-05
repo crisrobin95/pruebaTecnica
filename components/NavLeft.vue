@@ -22,21 +22,21 @@
 
   &__points {
     margin-left: 0.9em;
-    width: 1em;
-    height: 1em;
+    width: 1.875rem;
+    height: 1.875rem;
     cursor: pointer;
   }
 
   &__icon {
-    width: 1.75em;
-    height: 1.75em;
-    margin-right: 1em;
+    width: 1.75rem;
+    height: 1.7498rem;
+    margin-right: 1rem;
   }
   &__title {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Roobert;
     font-weight: 700;
-    font-size: 1.5em;
-    line-height: 0.97em;
+    font-size: 0.8125rem;
+    line-height: 0.975rem;
     letter-spacing: 0%;
     vertical-align: middle;
     text-transform: uppercase;

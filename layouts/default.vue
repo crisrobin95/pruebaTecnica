@@ -52,5 +52,12 @@
     height: fit-content;
     gap: 1.25rem;
   }
+
+  @media (max-width: 46.875rem) {
+    .main {
+      display: flex;
+      align-content: center;
+    }
+  }
 }
 </style>

@@ -1,4 +1,4 @@
-<script setup></script>
+<script setup lang="ts"></script>
 
 <template>
   <section class="division">
@@ -28,7 +28,7 @@
   &__more {
     display: flex;
     justify-content: space-between;
-    width: 25%;
+    width: 20%;
     align-items: center;
     height: 1.25rem;
     padding-right: 0.625rem;
@@ -37,13 +37,8 @@
     top: 0.9375rem;
     left: 34.3631rem;
     background: transparent;
-    font-family: Inter;
-    font-weight: 600;
-    font-size: 0.8125rem;
-    line-height: 1.2188rem;
-    letter-spacing: 0%;
-    text-align: center;
-    vertical-align: middle;
+    @include font-medium;
+    color: var(--c-icon-main);
   }
 }
 </style>
