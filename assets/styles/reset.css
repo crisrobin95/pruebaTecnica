@@ -15,7 +15,7 @@ body{
 }
 
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 0.4375em;
   background-color: var( --c-black);
   @media (max-width: 53.625em) {
@@ -31,4 +31,4 @@ body{
   @media (max-width: 53.625em) {
     width: 0;
   }
-} */
+}
