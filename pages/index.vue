@@ -3,7 +3,10 @@
 <template>
   <div class="page">
     <section class="page__title">
-      <StreamsCardsTheTittle :title="'Live channels'" />
+      <StreamsCardsTheTittle
+        :title="'Canales en directo'"
+        :description="'cocina en directo'"
+      />
     </section>
     <article class="page__cards">
       <StreamsCardsTheCards />
@@ -12,7 +15,7 @@
       <StreamsCardsTheDivider />
     </section>
     <section class="page__title">
-      <StreamsCardsTheTittle :title="'Category'" />
+      <StreamsCardsTheTittle :title="'Categoria'" :description="'cocina en directo'" />
     </section>
     <section class="page__category">
       <StreamsCardsTheCategory />
@@ -21,7 +24,10 @@
       <StreamsCardsTheBoxe />
     </section>
     <section class="page__title">
-      <StreamsCardsTheTittle :title="'Live channels'" />
+      <StreamsCardsTheTittle
+        :title="'Canales en Directo'"
+        :description="'cocina en directo'"
+      />
     </section>
     <article class="page__cards">
       <StreamsCardsTheCards />
@@ -30,7 +36,10 @@
       <StreamsCardsTheDivider />
     </section>
     <section class="page__title">
-      <StreamsCardsTheTittle :title="'Live channels'" />
+      <StreamsCardsTheTittle
+        :title="'Canales en Directo'"
+        :description="'cocina en directo'"
+      />
     </section>
     <article class="page__cards">
       <StreamsCardsTheCards />
@@ -38,6 +47,7 @@
     <section class="page__division">
       <StreamsCardsTheDivider />
     </section>
+    <TheFooter />
   </div>
 </template>
 
@@ -46,33 +56,29 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 132.6875rem;
+  max-width: 120rem;
+  height: 100%;
   gap: 1.25rem;
 
   &__title {
     display: flex;
     width: 100%;
+    max-width: 50rem;
     height: fit-content;
     padding-top: 1rem;
   }
-  &____division {
+  &__division {
     display: flex;
     width: 100%;
     height: 2.5rem;
   }
-
   &__cards {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 100%;
-    height: fit-content;
-    gap: 0.625rem;
+    @include flex(row, flex-start, flex-start, wrap, 1rem);
   }
+
   &__category {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 1rem;
     width: 100%;
     height: fit-content;
   }
@@ -85,19 +91,10 @@
     align-content: center;
     flex-wrap: wrap;
   }
-  @media (max-width: 90rem) {
-    .page {
-      &__cards {
-        display: flex;
-        justify-content: start;
-      }
-    }
-  }
-  @media (max-width: 200rem) {
-    .page {
-      &__cards {
-        justify-content: space-evenly;
-      }
+  @include responsive {
+    @include flex(column, center, center, wrap, 1rem);
+    &__box-types {
+      @include flex(column, center, center, wrap, 0);
     }
   }
 }

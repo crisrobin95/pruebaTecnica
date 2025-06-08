@@ -52,11 +52,17 @@
     height: fit-content;
     gap: 1.25rem;
   }
+  @include responsive {
+    flex-direction: column;
 
-  @media (max-width: 46.875rem) {
-    .main {
-      display: flex;
-      align-content: center;
+    &__recomended {
+      @include flex(row, center, center, nowrap, 0);
+      width: 100%;
+      order: -1;
+      margin-bottom: 1rem;
+    }
+    &__streams {
+      width: 100%;
     }
   }
 }
