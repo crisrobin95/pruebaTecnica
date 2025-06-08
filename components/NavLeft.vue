@@ -3,8 +3,8 @@
 <template>
   <NuxtLink :to="`/`" class="link">
     <div class="nav">
-      <SvgIconMain class="nav__icon" />
-      <h1 class="nav__title">MIDTUCH</h1>
+      <NuxtImg class="nav__img" src="/logo.png" />
+      <h1 class="nav__title">DIRECT CHEF'S</h1>
       <SvgIconPoints class="nav__points" />
     </div>
   </NuxtLink>
@@ -27,9 +27,10 @@
     cursor: pointer;
   }
 
-  &__icon {
-    width: 1.75rem;
-    height: 1.7498rem;
+  &__img {
+    background-color: var(--c-static-white);
+    width: 2.5rem;
+    height: 2.5rem;
     margin-right: 1rem;
   }
   &__title {

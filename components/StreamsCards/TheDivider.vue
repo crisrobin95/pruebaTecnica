@@ -3,7 +3,7 @@
 <template>
   <section class="division">
     <div class="division__bar"></div>
-    <button class="division__more">Show More <SvgIconMore /></button>
+    <button class="division__more">Ver Mas <SvgIconMore /></button>
     <div class="division__bar"></div>
   </section>
 </template>
@@ -27,7 +27,6 @@
   }
   &__more {
     display: flex;
-    justify-content: space-between;
     width: 20%;
     align-items: center;
     height: 1.25rem;

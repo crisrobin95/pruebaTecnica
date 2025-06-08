@@ -1,11 +1,36 @@
 <script setup lang="ts">
-const limit = 6
+const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1920)
+
+const updateWidth = () => {
+  windowWidth.value = window.innerWidth
+}
+
+onMounted(() => {
+  window.addEventListener('resize', updateWidth)
+})
+onUnmounted(() => {
+  window.removeEventListener('resize', updateWidth)
+})
+
+const limit = computed(() => {
+  if (windowWidth.value <= 1024) return 3
+  if (windowWidth.value <= 1280) return 4
+  if (windowWidth.value < 1490) return 5
+  if (windowWidth.value <= 1600) return 6
+  if (windowWidth.value <= 1920) return 7
+  if (windowWidth.value > 1920) return 8
+  return 4
+})
 const { topCategories, error, loading } = useTwitchTopCategories(limit)
 </script>
 
 <template>
   <div v-if="loading">Loading...</div>
-  <section class="category-cards" v-for="category in topCategories" :key="category.id">
+  <section
+    class="category-cards"
+    v-for="category in (topCategories || []).slice(0, limit)"
+    :key="category.id"
+  >
     <img
       class="category-cards__port"
       :src="category.box_art_url.replace('{width}x{height}', '285x380')"
@@ -61,6 +86,9 @@ const { topCategories, error, loading } = useTwitchTopCategories(limit)
   }
   &__tag {
     @include tag;
+  }
+  @include responsive {
+    @include flex(column, flex-start, flex-start, wrap, 1rem);
   }
 }
 </style>

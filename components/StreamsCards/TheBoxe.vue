@@ -1,11 +1,11 @@
 <script setup lang="ts"></script>
 <template>
   <article class="type">
-    <span class="type__game">Games <SvgIconGame /></span>
-    <span class="type__micro">IRL <SvgIconMicro /></span>
-    <span class="type__music">Music & Djs <SvgIconMusic /></span>
-    <span class="type__creative">Creative <SvgIconCreative /></span>
-    <span class="type__esports">Esport <SvgIconPrice /></span>
+    <span class="type__game">España <SvgIconGame /></span>
+    <span class="type__micro">Italia <SvgIconMicro /></span>
+    <span class="type__music">Francia <SvgIconMusic /></span>
+    <span class="type__creative">Japón <SvgIconCreative /></span>
+    <span class="type__esports">Ecuador <SvgIconPrice /></span>
   </article>
 </template>
 
@@ -19,55 +19,21 @@
   padding-bottom: 0.625rem;
   gap: 0.625rem;
 
-  &__game {
-    @include styleBoxes;
-    border: 0.125rem solid transparent;
-
-    &:hover {
-      background-color: var(--c-red);
-    }
-  }
-  &__icon {
-    @include imgBoxes;
-    border: 0.125rem solid transparent;
-
-    &:hover {
-      background-color: var(--c-red);
-    }
-  }
-
-  &__micro {
-    @include styleBoxes;
-    border: 0.125rem solid transparent;
-
-    &:hover {
-      background-color: var(--c-red);
-    }
-  }
-  &__music {
-    @include styleBoxes;
-    border: 0.125rem solid transparent;
-
-    &:hover {
-      background-color: var(--c-red);
-    }
-  }
-
-  &__creative {
-    @include styleBoxes;
-    border: 0.125rem solid transparent;
-
-    &:hover {
-      background-color: var(--c-red);
-    }
-  }
+  &__game,
+  &__icon,
+  &__micro,
+  &__music,
+  &__creative,
   &__esports {
     @include styleBoxes;
     border: 0.125rem solid transparent;
-
     &:hover {
-      background-color: var(--c-red);
+      border: 0.125rem solid rgb(52, 249, 26);
     }
+  }
+
+  @include responsive {
+    @include flex(column, center, center, wrap, 1rem);
   }
 }
 </style>

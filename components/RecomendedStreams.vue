@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { useTwitchData } from '~/composables/useTwitch'
 
-const limit = 8
-const { userData, streamData, channelData, error, loading } = useTwitchData(limit)
-
 const rotationAngle = ref(0)
 
 const isPanelVisible = ref(true)
@@ -27,6 +24,11 @@ const handleResize = () => {
   isPanelVisible.value = window.innerWidth > 750
   rotationAngle.value = isPanelVisible.value ? 0 : 180
 }
+const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1920)
+
+const updateWidth = () => {
+  windowWidth.value = window.innerWidth
+}
 
 onBeforeMount(() => {
   if (typeof window !== 'undefined') {
@@ -37,18 +39,27 @@ onBeforeMount(() => {
 onMounted(() => {
   if (typeof window !== 'undefined') {
     window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', updateWidth)
   }
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
+  window.removeEventListener('resize', updateWidth)
 })
+const limit = computed(() => {
+  if (windowWidth.value < 500) return 7
+  if (windowWidth.value <= 1024) return 4
+  if (windowWidth.value > 1024) return 8
+  return 4
+})
+const { userData, streamData, channelData, error, loading } = useTwitchData(limit)
 </script>
 
 <template>
   <aside class="recomended-streams">
     <section class="mains">
-      <p class="title" v-if="isPanelVisible">Recommended Channels</p>
+      <p class="title" v-if="isPanelVisible">Canales Recomendados</p>
       <button class="ocult" @click="togglePanelVisibility">
         <SvgIconOcult
           class="recomended-streams__ocult--button"
@@ -63,12 +74,14 @@ onUnmounted(() => {
       :key="user.id"
       class="recomended-streams__box"
     >
-      <img
-        :src="user.profile_image_url.replace('{width}x{height}', '1x1')"
-        :alt="`Thumbnail of ${user.display_name}'s stream`"
-        :class="{ rotated: props.collapsed }"
-        class="recomended-streams__img"
-      />
+      <NuxtLink :to="`/${user.login}`">
+        <img
+          :src="user.profile_image_url.replace('{width}x{height}', '1x1')"
+          :alt="`Thumbnail of ${user.display_name}'s stream`"
+          :class="{ rotated: props.collapsed }"
+          class="recomended-streams__img"
+        />
+      </NuxtLink>
       <NuxtLink :to="`/${user.login}`" class="recomended-streams__name">
         <p class="recomended-streams__name-channel" v-if="isPanelVisible">
           {{ user.display_name.slice(0, 8) }}
@@ -103,10 +116,7 @@ onUnmounted(() => {
   width: 100%;
   height: 2.25rem;
   justify-content: space-between;
-  padding-top: 0.625rem;
-  padding-right: 0.3125rem;
-  padding-bottom: 0.625rem;
-  padding-left: 0.3125rem;
+  padding: 0.625rem 0.3125rem 0.625rem 0.3125rem;
 }
 .title {
   width: 100%;
@@ -119,13 +129,12 @@ onUnmounted(() => {
   height: 0.75rem;
   background-color: transparent;
   &:hover {
-    background-color: var(--c-red);
+    background-color: var(--c-icon-main);
   }
 }
 
 .recomended-streams {
-  display: flex;
-  flex-direction: column;
+  @include flex(column, flex-start, flex-start);
   width: fit-content;
   transition: width 0.3s ease-in-out;
   &.collapsed {
@@ -140,10 +149,7 @@ onUnmounted(() => {
     height: 2.5rem;
     justify-content: space-between;
     gap: 0.5rem;
-    padding-top: 0.3125rem;
-    padding-right: 0.625rem;
-    padding-bottom: 0.3125rem;
-    padding-left: 0.625rem;
+    padding: 0.5rem;
   }
 
   &__img {
@@ -206,6 +212,22 @@ onUnmounted(() => {
   &__ocult--button {
     transition: transform 0.3s ease-in-out;
     transform: rotate(0deg);
+  }
+  @include responsive {
+    .mains {
+      display: none;
+    }
+    @include flex(row, center, center, nowrap, 0);
+    width: 50%;
+
+    &__count,
+    &__point-viewers,
+    &__viewrs,
+    &__info-chanel,
+    &__name,
+    &__name-channel {
+      display: none;
+    }
   }
 }
 </style>

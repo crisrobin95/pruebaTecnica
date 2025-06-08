@@ -4,11 +4,15 @@
     <button class="notification__icon">
       <SvgIconNotification class="notification__icon-notify" />
     </button>
-    <button class="notification__log">Log In</button>
+    <NuxtLink :to="'/sesion'">
+      <button class="notification__log">Log In</button>
+    </NuxtLink>
     <button class="notification__sing">Sign Up</button>
-    <button class="notification__profile">
-      <SvgIconProfile />
-    </button>
+    <NuxtLink :to="'/myAcount'">
+      <button class="notification__profile">
+        <SvgIconProfile />
+      </button>
+    </NuxtLink>
   </div>
 </template>
 
@@ -33,6 +37,7 @@
     border-radius: 0.2em;
     width: auto;
     padding: 0.5em;
+    cursor: pointer;
   }
 
   &__sing {
@@ -45,6 +50,7 @@
   }
   &__profile {
     background-color: transparent;
+    cursor: pointer;
   }
 }
 @media (max-width: 750px) {

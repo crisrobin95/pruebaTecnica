@@ -19,17 +19,17 @@ const descriptionDefault = 'we think you’ll like'
   @include fontChannels;
   display: flex;
   align-items: center;
-  width: 16.5em;
-  height: 1.37em;
-  padding-top: 0.2em;
-  padding-bottom: 0.6em;
+  width: 100dvw;
+  height: auto;
 }
 .channels {
   @include fontChannels;
-  width: auto;
+  width: 13rem;
+  max-width: 120rem;
   margin-right: 0.5em;
 }
 .sugerens {
-  width: auto;
+  width: 100%;
+  max-width: 120rem;
 }
 </style>

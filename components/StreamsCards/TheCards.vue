@@ -1,6 +1,25 @@
 <script setup lang="ts">
-import { useTwitchData } from '~/composables/useTwitch'
-const limit = 3
+import { useTwitchData } from '@/composables/useTwitch'
+
+const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1920)
+
+const updateWidth = () => {
+  windowWidth.value = window.innerWidth
+}
+
+onMounted(() => {
+  window.addEventListener('resize', updateWidth)
+})
+onUnmounted(() => {
+  window.removeEventListener('resize', updateWidth)
+})
+
+const limit = computed(() => {
+  if (windowWidth.value < 1098) return 2
+  if (windowWidth.value > 1920) return 4
+  if (windowWidth.value < 1430) return 2
+  return 3
+})
 const { userData, streamData, error, loading } = useTwitchData(limit)
 </script>
 
@@ -26,7 +45,7 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
         />
         <article class="streams-items__details">
           <h1 class="streams-items__title">
-            {{ streamData[index].title.slice(0, 20) }}
+            {{ streamData[index].title.slice(0, 40) }}
           </h1>
           <p class="streams-items__name-channel">
             {{ users.display_name }}<SvgIconVerified />
@@ -63,18 +82,14 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
 .streams-items {
   display: inline-flex;
   flex-direction: column;
-  justify-content: space-between;
   width: fit-content;
+  border: 0.125rem solid transparent;
   &:hover {
-    background-color: var(--c-red);
+    border: 0.125rem solid var(--c-icon-main);
   }
 
   &__link {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    text-decoration: none;
-    gap: 0.625rem;
+    padding: 0.125rem;
     cursor: pointer;
   }
   &__title {
@@ -108,27 +123,18 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
     border-radius: 50%;
   }
   &__category {
+    @include flex(row, flex-start, flex-start, wrap, 1rem);
     color: rgba(173, 173, 184, 1);
     @include font-small;
   }
   &__tags {
     @include tag;
   }
-
-  @media (max-width: 26.875rem) {
-    .streams-items {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      &__stream-img {
-        width: 15rem;
-        height: 10rem;
-      }
-    }
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
+  @include responsive {
+    @include flex(row, flex-start);
+    &__stream-img {
+      width: 15rem;
+      height: 12rem;
     }
   }
 }
