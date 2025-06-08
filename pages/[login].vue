@@ -22,7 +22,7 @@ const login = route.params.login as string
     </main>
     <aside class="stream-page__chat">
       <iframe
-        :src="`https://www.twitch.tv/embed/${login}/chat?parent=prueba-tecnica-cyan-omega.vercel.app`"
+        :src="`https://www.twitch.tv/embed/${login}/chat?parent=prueba-tecnica-cyan-omega.vercel.app&darkpopout=true`"
         class="stream-page__chat-box"
       >
       </iframe>
