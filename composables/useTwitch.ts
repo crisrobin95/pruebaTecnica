@@ -1,19 +1,18 @@
-import { ref, onMounted } from 'vue'
 import type { User, Streams, Games, Channels } from '~/types/typesPoryect'
 import { twitchAPIClient } from '~/utils/twitchApi'
 
-export function useTwitchData(limit: number) {
+export function useTwitchData(limit: Ref<number>) {
   const userData = ref<User[]>([])
   const streamData = ref<Streams[]>([])
   const channelData = ref<Channels[]>([])
   const error = ref<Error | null>(null)
   const loading = ref<boolean>(true)
 
-  onMounted(async () => {
+  const fetchData = async () => {
     loading.value = true
     try {
       const streamsData = await twitchAPIClient.fetch<any>(
-        `streams?first=${limit}&language=es`,
+        `streams?first=${limit.value}&language=es`,
       )
       const streams = streamsData.data
       streamData.value = streams
@@ -32,7 +31,10 @@ export function useTwitchData(limit: number) {
       error.value = err
       loading.value = false
     }
-  })
+  }
+
+  onMounted(fetchData)
+  watch(limit, fetchData)
 
   return {
     userData,
@@ -43,7 +45,7 @@ export function useTwitchData(limit: number) {
   }
 }
 
-export function useTwitchTopCategories(limit: number) {
+export function useTwitchTopCategories(limit: Ref<number>) {
   const topCategories = ref<
     {
       id: string
@@ -56,10 +58,12 @@ export function useTwitchTopCategories(limit: number) {
   const error = ref<Error | null>(null)
   const loading = ref<boolean>(true)
 
-  onMounted(async () => {
+  const fetchCategories = async () => {
     loading.value = true
     try {
-      const categoriesData = await twitchAPIClient.fetch<any>(`games/top?first=${limit}`)
+      const categoriesData = await twitchAPIClient.fetch<any>(
+        `games/top?first=${limit.value}`,
+      )
       const games = categoriesData.data
 
       const categoriesWithStreamInfo = await Promise.all(
@@ -87,7 +91,10 @@ export function useTwitchTopCategories(limit: number) {
       error.value = err
       loading.value = false
     }
-  })
+  }
+
+  onMounted(fetchCategories)
+  watch(limit, fetchCategories)
 
   return {
     topCategories,
@@ -142,16 +149,3 @@ export function useTwitchUser(login: string) {
     loading,
   }
 }
-
-// export function useTwitchChannelsTotal(userid: string) {
-//   const channelData = ref<ChannelsTotal>()
-//   onMounted(async () => {
-//     channelData.value = await twitchAPIClient.fetch<any>(
-//       `channels/followers?broadcaster_id=${userid}`,
-//     )
-//     console.log(channelData.value)
-//   })
-//   const totalFollowers = (channelData.value as ChannelsTotal).total
-
-//   return totalFollowers
-// }
