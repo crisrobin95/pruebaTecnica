@@ -15,7 +15,7 @@ onUnmounted(() => {
 })
 
 const limit = computed(() => {
-  if (windowWidth.value < 1098) return 2
+  if (windowWidth.value < 1098) return 3
   if (windowWidth.value > 1920) return 4
   if (windowWidth.value < 1430) return 2
   return 3
@@ -132,6 +132,9 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
   }
   @include responsive {
     @include flex(row, flex-start);
+    &__category {
+      @include flex(column);
+    }
     &__stream-img {
       width: 15rem;
       height: 12rem;

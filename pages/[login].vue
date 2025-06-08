@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 const login = route.params.login as string
+// prueba-tecnica-cyan-omega.vercel.app
 </script>
 
 <template>
@@ -8,7 +9,7 @@ const login = route.params.login as string
     <main class="stream-page__live">
       <iframe
         v-if="login"
-        :src="`https://player.twitch.tv/?channel=${login}&parent=prueba-tecnica-cyan-omega.vercel.app`"
+        :src="`https://player.twitch.tv/?channel=${login}&parent=localhost`"
         height="720"
         width="1280"
         allowfullscreen
@@ -22,7 +23,7 @@ const login = route.params.login as string
     </main>
     <aside class="stream-page__chat">
       <iframe
-        :src="`https://www.twitch.tv/embed/${login}/chat?parent=prueba-tecnica-cyan-omega.vercel.app&darkpopout=true`"
+        :src="`https://www.twitch.tv/embed/${login}/chat?parent=localhost&darkpopout=true`"
         class="stream-page__chat-box"
       >
       </iframe>

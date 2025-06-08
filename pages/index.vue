@@ -59,6 +59,7 @@
   max-width: 120rem;
   height: 100%;
   gap: 1.25rem;
+  padding: var(--s-padding-lateral-mobile);
 
   &__title {
     display: flex;
@@ -93,8 +94,20 @@
   }
   @include responsive {
     @include flex(column, center, center, wrap, 1rem);
-    &__box-types {
+    &__box-types,
+    &__category {
       @include flex(column, center, center, wrap, 0);
+    }
+
+    &__title,
+    &__cards,
+    &__division {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      width: 100%;
+      max-width: 15rem;
+      height: fit-content;
     }
   }
 }
