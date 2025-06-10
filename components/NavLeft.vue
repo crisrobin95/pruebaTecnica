@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <NuxtLink :to="`/`" class="link">
+  <NuxtLink :to="`/home`" class="link">
     <div class="nav">
       <NuxtImg class="nav__img" src="/logo.png" />
       <h1 class="nav__title">DIRECT CHEF'S</h1>
