@@ -9,7 +9,7 @@ function handleLogin() {
   if (username.value === 'admin' && password.value === '1234') {
     error.value = ''
 
-    router.push('/')
+    router.push('/home')
   } else {
     error.value = 'Usuario o contraseña incorrectos'
   }
@@ -18,6 +18,7 @@ function handleLogin() {
 <template>
   <section class="login">
     <div class="login__box">
+      <NuxtImg class="login__img" src="/logo.png" />
       <h1 class="login__title">Iniciar Sesión</h1>
       <form class="login__form" @submit.prevent="handleLogin">
         <label class="login__label">
@@ -54,7 +55,10 @@ function handleLogin() {
   align-items: center;
   justify-content: center;
   background: #18181b;
-
+  &__img {
+    width: 15rem;
+    margin-bottom: 1rem;
+  }
   &__box {
     background: #23232b;
     padding: 2rem 2.5rem;
