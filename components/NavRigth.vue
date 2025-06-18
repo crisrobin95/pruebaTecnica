@@ -4,7 +4,7 @@
     <button class="notification__icon">
       <SvgIconNotification class="notification__icon-notify" />
     </button>
-    <NuxtLink :to="'/sesion'">
+    <NuxtLink :to="'/'">
       <button class="notification__log">Log In</button>
     </NuxtLink>
     <button class="notification__sing">Sign Up</button>
@@ -52,10 +52,11 @@
     background-color: transparent;
     cursor: pointer;
   }
-}
-@media (max-width: 750px) {
-  .notification {
-    display: none;
+  @include responsive {
+    &__log,
+    &__sing {
+      display: none;
+    }
   }
 }
 </style>

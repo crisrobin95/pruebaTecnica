@@ -42,5 +42,10 @@
     vertical-align: middle;
     text-transform: uppercase;
   }
+  @include responsive {
+    &__points {
+      display: none;
+    }
+  }
 }
 </style>

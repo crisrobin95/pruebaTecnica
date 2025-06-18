@@ -40,7 +40,7 @@
     width: 1.5rem;
     height: 1.5rem;
   }
-  @media (max-width: 420px) {
+  @include responsive {
     .search-bar {
       display: none;
     }
