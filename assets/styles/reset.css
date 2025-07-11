@@ -3,21 +3,19 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
-  font-family: Inter;
-  color: var( --c-static-white);
+  font-family: 'Roobert';
+  color: var(--c-static-white);
 }
 
-body{
-  
+body {
   max-width: 120rem;
   margin: auto;
   background-color: var(--c-black);
 }
 
-
 ::-webkit-scrollbar {
   width: 0.4375em;
-  background-color: var( --c-black);
+  background-color: var(--c-black);
   @media (max-width: 53.625em) {
     width: 0;
   }

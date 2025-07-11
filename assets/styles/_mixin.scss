@@ -105,7 +105,7 @@
   }
 }
 @mixin fontChannels() {
-  font-family: Arial;
+  font-family: 'Roobert';
   font-weight: 600;
   font-size: 1.125rem;
   line-height: 1.35rem;
@@ -127,7 +127,7 @@
 }
 
 @mixin font-medium {
-  font-family: Inter;
+  font-family: 'Roobert';
   font-weight: 600;
   font-size: 0.875rem;
   line-height: 1.05rem;
@@ -136,7 +136,7 @@
 }
 
 @mixin font-small {
-  font-family: Inter;
+  font-family: 'Roobert';
   font-weight: 400;
   font-size: 0.8125rem;
   line-height: 1.2188rem;
@@ -163,5 +163,5 @@
   padding-right: 0.625em;
   width: 3.75rem;
   height: 3.75rem;
-  max-width: width/60;
+  max-width: &width/60;
 }
