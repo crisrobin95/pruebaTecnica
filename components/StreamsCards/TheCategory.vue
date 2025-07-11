@@ -68,7 +68,7 @@ const { topCategories, error, loading } = useTwitchTopCategories(limit)
   &__info {
     display: flex;
     justify-content: left;
-    font-family: Inter;
+
     font-weight: 700;
     font-size: 0.875rem;
     line-height: 1.3125rem;
@@ -76,7 +76,7 @@ const { topCategories, error, loading } = useTwitchTopCategories(limit)
   }
   &__viewers {
     display: flex;
-    font-family: Inter;
+
     font-weight: 400;
     font-size: 13px;
     line-height: 19.5px;

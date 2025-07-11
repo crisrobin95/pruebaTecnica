@@ -4,10 +4,6 @@
     <button class="notification__icon">
       <SvgIconNotification class="notification__icon-notify" />
     </button>
-    <NuxtLink :to="'/'">
-      <button class="notification__log">Log In</button>
-    </NuxtLink>
-    <button class="notification__sing">Sign Up</button>
     <NuxtLink :to="'/myAcount'">
       <button class="notification__profile">
         <SvgIconProfile />

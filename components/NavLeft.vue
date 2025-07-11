@@ -34,9 +34,8 @@
     margin-right: 1rem;
   }
   &__title {
-    font-family: Roobert;
     font-weight: 700;
-    font-size: 0.8125rem;
+    font-size: 1.5rem;
     line-height: 0.975rem;
     letter-spacing: 0%;
     vertical-align: middle;

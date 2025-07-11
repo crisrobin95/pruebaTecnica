@@ -104,7 +104,7 @@ const { userData, streamData, startTime, error, loading } = useTwitchUser(props.
   &__name-user {
     display: flex;
     flex-wrap: wrap;
-    font-family: Roobert;
+
     font-weight: 600;
     font-size: 1.125rem;
     line-height: 1.35rem;

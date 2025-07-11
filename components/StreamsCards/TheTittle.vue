@@ -8,27 +8,19 @@ const props = defineProps<Props>()
 const descriptionDefault = 'we think you’ll like'
 </script>
 <template>
-  <section class="container">
-    <p class="channels">{{ props.title }}</p>
-    <p class="sugerens">{{ props.description || descriptionDefault }}</p>
-  </section>
+  <span class="channels">{{ props.title }}</span>
+  <span class="sugerens">{{ props.description || descriptionDefault }}</span>
 </template>
 
 <style lang="scss" scoped>
-.container {
-  @include fontChannels;
-  display: flex;
-  align-items: center;
-  width: 100dvw;
-  height: auto;
-}
 .channels {
   @include fontChannels;
-  width: 13rem;
+  width: 11rem;
   max-width: 120rem;
   margin-right: 0.5em;
 }
 .sugerens {
+  align-content: center;
   width: 100%;
   max-width: 120rem;
 }

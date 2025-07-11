@@ -149,7 +149,6 @@ const { userData, streamData, channelData, error, loading } = useTwitchData(limi
     height: 2.5rem;
     justify-content: space-between;
     gap: 0.5rem;
-    padding: 0.5rem;
   }
 
   &__img {
@@ -163,7 +162,7 @@ const { userData, streamData, channelData, error, loading } = useTwitchData(limi
   &__name-channel {
     width: 8.75rem;
     height: 0.9375rem;
-    font-family: Inter;
+
     font-weight: 600;
     font-size: 0.875rem;
     line-height: 1.05rem;
@@ -174,11 +173,12 @@ const { userData, streamData, channelData, error, loading } = useTwitchData(limi
     display: flex;
     flex-direction: column;
     text-decoration: none;
+    gap: 0.3rem;
   }
   &__info-chanel {
     width: 8.75rem;
     height: 0.9375rem;
-    font-family: Inter;
+
     font-weight: 400;
     font-size: 0.8125rem;
     line-height: 0.975rem;
@@ -202,11 +202,9 @@ const { userData, streamData, channelData, error, loading } = useTwitchData(limi
   &__count {
     display: flex;
     align-items: flex-start;
-    font-family: Inter;
     font-weight: 400;
-    font-size: 0.81rem;
+
     line-height: 1.21em;
-    letter-spacing: 0%;
     vertical-align: middle;
   }
   &__ocult--button {
