@@ -52,11 +52,11 @@
     height: fit-content;
     gap: 1.25rem;
   }
-  @include responsive {
+  @include main.responsive {
     flex-direction: column;
 
     &__recomended {
-      @include flex(row, center, center, nowrap, 0);
+      @include main.flex(row, center, center, nowrap, 0);
       width: 100%;
       order: -1;
       margin-bottom: 1rem;

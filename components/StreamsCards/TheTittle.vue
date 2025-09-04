@@ -14,7 +14,7 @@ const descriptionDefault = 'we think you’ll like'
 
 <style lang="scss" scoped>
 .channels {
-  @include fontChannels;
+  @include main.fontChannels;
   width: 11rem;
   max-width: 120rem;
   margin-right: 0.5em;

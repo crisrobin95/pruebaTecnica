@@ -131,7 +131,7 @@ const { userData, streamData, startTime, error, loading } = useTwitchUser(props.
   }
   &__title {
     width: 60%;
-    @include font-medium;
+    @include main.font-medium;
   }
   &__time {
     font-family: Helvetica;
@@ -142,7 +142,7 @@ const { userData, streamData, startTime, error, loading } = useTwitchUser(props.
     vertical-align: middle;
   }
   &__viewers {
-    @include font-small;
+    @include main.font-small;
     color: rgba(255, 130, 128, 1);
   }
   &__tags-box {
@@ -153,7 +153,7 @@ const { userData, streamData, startTime, error, loading } = useTwitchUser(props.
   }
   &__game-name {
     width: fit-content;
-    @include font-small;
+    @include main.font-small;
     color: rgba(25, 154, 252, 1);
     text-decoration: underline;
   }
@@ -161,7 +161,7 @@ const { userData, streamData, startTime, error, loading } = useTwitchUser(props.
     display: flex;
     flex-wrap: wrap;
     gap: 0.3125rem;
-    @include tag;
+    @include main.tag;
   }
   @media (max-width: 720px) {
     .stream-info {

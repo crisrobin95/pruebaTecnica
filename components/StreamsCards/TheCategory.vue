@@ -85,10 +85,10 @@ const { topCategories, error, loading } = useTwitchTopCategories(limit)
     color: rgba(173, 173, 184, 1);
   }
   &__tag {
-    @include tag;
+    @include main.tag;
   }
-  @include responsive {
-    @include flex(column, flex-start, flex-start, wrap, 1rem);
+  @include main.responsive {
+    @include main.flex(column, flex-start, flex-start, wrap, 1rem);
   }
 }
 </style>

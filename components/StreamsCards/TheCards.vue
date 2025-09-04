@@ -93,7 +93,7 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
     cursor: pointer;
   }
   &__title {
-    @include font-medium;
+    @include main.font-medium;
   }
   &__details {
     display: flex;
@@ -114,7 +114,7 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
   }
   &__name-channel {
     color: rgba(173, 173, 184, 1);
-    @include font-small;
+    @include main.font-small;
   }
 
   &__icon-channel {
@@ -123,17 +123,17 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
     border-radius: 50%;
   }
   &__category {
-    @include flex(row, flex-start, flex-start, wrap, 1rem);
+    @include main.flex(row, flex-start, flex-start, wrap, 1rem);
     color: rgba(173, 173, 184, 1);
-    @include font-small;
+    @include main.font-small;
   }
   &__tags {
-    @include tag;
+    @include main.tag;
   }
-  @include responsive {
-    @include flex(row, flex-start);
+  @include main.responsive {
+    @include main.flex(row, flex-start);
     &__category {
-      @include flex(column);
+      @include main.flex(column);
     }
     &__stream-img {
       width: 15rem;

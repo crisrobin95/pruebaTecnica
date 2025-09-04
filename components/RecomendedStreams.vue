@@ -121,7 +121,7 @@ const { userData, streamData, channelData, error, loading } = useTwitchData(limi
 .title {
   width: 100%;
   height: 1rem;
-  @include font-medium;
+  @include main.font-medium;
 }
 
 .ocult {
@@ -134,7 +134,7 @@ const { userData, streamData, channelData, error, loading } = useTwitchData(limi
 }
 
 .recomended-streams {
-  @include flex(column, flex-start, flex-start);
+  @include main.flex(column, flex-start, flex-start);
   width: fit-content;
   transition: width 0.3s ease-in-out;
   &.collapsed {
@@ -211,11 +211,11 @@ const { userData, streamData, channelData, error, loading } = useTwitchData(limi
     transition: transform 0.3s ease-in-out;
     transform: rotate(0deg);
   }
-  @include responsive {
+  @include main.responsive {
     .mains {
       display: none;
     }
-    @include flex(row, center, center, nowrap, 0);
+    @include main.flex(row, center, center, nowrap, 0);
     width: 50%;
 
     &__count,

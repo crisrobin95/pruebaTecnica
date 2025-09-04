@@ -36,7 +36,7 @@
     top: 0.9375rem;
     left: 34.3631rem;
     background: transparent;
-    @include font-medium;
+    @include main.font-medium;
     color: var(--c-icon-main);
   }
 }

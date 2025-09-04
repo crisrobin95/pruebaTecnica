@@ -29,7 +29,7 @@
   &__log {
     background-color: #2f2f35;
     color: white;
-    @include font-medium;
+    @include main.font-medium;
     border-radius: 0.2em;
     width: auto;
     padding: 0.5em;
@@ -39,7 +39,7 @@
   &__sing {
     background-color: #199afc;
     color: white;
-    @include font-medium;
+    @include main.font-medium;
     border-radius: 0.2em;
     width: auto;
     padding: 0.5em;
@@ -48,7 +48,7 @@
     background-color: transparent;
     cursor: pointer;
   }
-  @include responsive {
+  @include main.responsive {
     &__log,
     &__sing {
       display: none;

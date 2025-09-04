@@ -45,7 +45,7 @@ const { userData, streamData, error, loading } = useTwitchUser(props.login)
   flex-direction: column;
   gap: 1rem;
   &__user-name {
-    @include font-medium;
+    @include main.font-medium;
   }
   &__info {
     display: flex;
@@ -57,7 +57,7 @@ const { userData, streamData, error, loading } = useTwitchUser(props.login)
     padding: 1.25rem;
   }
   &__description {
-    @include font-small;
+    @include main.font-small;
   }
   &__social-networks {
     display: flex;
@@ -76,7 +76,7 @@ const { userData, streamData, error, loading } = useTwitchUser(props.login)
   &__text-social {
     display: flex;
     align-items: center;
-    @include font-medium;
+    @include main.font-medium;
   }
 }
 </style>

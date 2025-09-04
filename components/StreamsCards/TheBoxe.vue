@@ -25,15 +25,15 @@
   &__music,
   &__creative,
   &__esports {
-    @include styleBoxes;
+    @include main.styleBoxes;
     border: 0.125rem solid transparent;
     &:hover {
       border: 0.125rem solid rgb(52, 249, 26);
     }
   }
 
-  @include responsive {
-    @include flex(column, center, center, wrap, 1rem);
+  @include main.responsive {
+    @include main.flex(column, center, center, wrap, 1rem);
   }
 }
 </style>

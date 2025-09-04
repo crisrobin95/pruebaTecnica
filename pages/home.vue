@@ -74,7 +74,7 @@
     height: 2.5rem;
   }
   &__cards {
-    @include flex(row, flex-start, flex-start, wrap, 0);
+    @include main.flex(row, flex-start, flex-start, wrap, 0);
   }
 
   &__category {
@@ -92,11 +92,11 @@
     align-content: center;
     flex-wrap: wrap;
   }
-  @include responsive {
-    @include flex(column, center, center, wrap, 1rem);
+  @include main.responsive {
+    @include main.flex(column, center, center, wrap, 1rem);
     &__box-types,
     &__category {
-      @include flex(column, center, center, wrap, 0);
+      @include main.flex(column, center, center, wrap, 0);
     }
 
     &__title,
