@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   css: ['@/assets/styles/reset.css', '@/assets/styles/variables.css'],
 
   modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/icon', '@nuxt/image'],
@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "~/assets/styles/main.scss";',
+          additionalData: '@use "~/assets/styles/main.scss";',
         },
       },
     },
