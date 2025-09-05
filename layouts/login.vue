@@ -56,6 +56,9 @@ function handleLogin() {
   justify-content: center;
   background: #18181b;
   &__img {
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background: #fff;
     width: 15rem;
     margin-bottom: 1rem;
   }
