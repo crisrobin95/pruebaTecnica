@@ -17,8 +17,8 @@ const limit = computed(() => {
   if (windowWidth.value <= 1280) return 4
   if (windowWidth.value < 1490) return 5
   if (windowWidth.value <= 1600) return 6
-  if (windowWidth.value <= 1920) return 7
-  if (windowWidth.value > 1920) return 8
+  if (windowWidth.value <= 1918) return 7
+  if (windowWidth.value > 1919) return 8
   return 4
 })
 const { topCategories, error, loading } = useTwitchTopCategories(limit)
