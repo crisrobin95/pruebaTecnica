@@ -90,7 +90,11 @@ const { userData, streamData, channelData, error, loading } = useTwitchData(limi
           class="recomended-streams__info-chanel"
           v-if="isPanelVisible && userData && streamData && streamData[index]"
         >
-          {{ streamData.find((stream) => stream.user_id === user.id)?.game_name }}
+          {{
+            streamData
+              .find((stream) => stream.user_id === user.id)
+              ?.game_name.slice(0, 20)
+          }}
         </p>
       </NuxtLink>
       <section v-if="isPanelVisible" class="recomended-streams__point-viewers">
@@ -178,7 +182,6 @@ const { userData, streamData, channelData, error, loading } = useTwitchData(limi
   &__info-chanel {
     width: 8.75rem;
     height: 0.9375rem;
-
     font-weight: 400;
     font-size: 0.8125rem;
     line-height: 0.975rem;
@@ -190,7 +193,6 @@ const { userData, streamData, channelData, error, loading } = useTwitchData(limi
   &__viewrs {
     display: flex;
     justify-content: flex-start;
-    width: 2.5rem;
     height: 1.875rem;
     gap: 0.3125rem;
   }
@@ -198,12 +200,14 @@ const { userData, streamData, channelData, error, loading } = useTwitchData(limi
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    width: auto;
+    gap: 0.2rem;
   }
   &__count {
     display: flex;
-    align-items: flex-start;
+    justify-content: flex-end;
+    align-items: flex-end;
     font-weight: 400;
-
     line-height: 1.21em;
     vertical-align: middle;
   }
