@@ -5,7 +5,7 @@
     <div class="nav">
       <NuxtImg class="nav__img" src="/logo.png" />
       <h1 class="nav__title">DIRECT CHEF'S</h1>
-      <SvgIconPoints class="nav__points" />
+      <!-- <SvgIconPoints class="nav__points" /> -->
     </div>
   </NuxtLink>
 </template>
