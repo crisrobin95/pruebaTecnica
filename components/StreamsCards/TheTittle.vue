@@ -15,13 +15,15 @@ const descriptionDefault = 'we think you’ll like'
 <style lang="scss" scoped>
 .channels {
   @include main.fontChannels;
-  width: 11rem;
+  display: flex;
+  flex-direction: row;
+  width: auto;
   max-width: 120rem;
   margin-right: 0.5em;
 }
 .sugerens {
   align-content: center;
-  width: 100%;
+  width: auto;
   max-width: 120rem;
 }
 </style>
