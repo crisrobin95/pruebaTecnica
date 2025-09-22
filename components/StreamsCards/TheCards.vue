@@ -16,7 +16,7 @@ onUnmounted(() => {
 
 const limit = computed(() => {
   if (windowWidth.value < 1098) return 3
-  if (windowWidth.value > 1920) return 4
+  if (windowWidth.value > 1919) return 4
   if (windowWidth.value < 1430) return 2
   return 3
 })
@@ -45,7 +45,7 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
         />
         <article class="streams-items__details">
           <h1 class="streams-items__title">
-            {{ streamData[index].title.slice(0, 40) }}
+            {{ streamData[index]?.title ? streamData[index].title.slice(0, 40) : '' }}
           </h1>
           <p class="streams-items__name-channel">
             {{ users.display_name }}<SvgIconVerified />
@@ -82,6 +82,7 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
 .streams-items {
   display: inline-flex;
   flex-direction: column;
+
   width: fit-content;
   border: 0.125rem solid transparent;
   &:hover {
@@ -89,6 +90,7 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
   }
 
   &__link {
+    text-decoration: none;
     padding: 0.125rem;
     cursor: pointer;
   }
@@ -110,9 +112,11 @@ const { userData, streamData, error, loading } = useTwitchData(limit)
     display: flex;
     width: fit-content;
     height: fit-content;
+    margin-top: 1rem;
     gap: 0.75rem;
   }
   &__name-channel {
+    @include main.flex(row, center, flex-start, nowrap, 0.2rem);
     color: rgba(173, 173, 184, 1);
     @include main.font-small;
   }
